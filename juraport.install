@@ -1,0 +1,370 @@
+<?php
+
+/**
+ * @file
+ *
+ * Install, update and uninstall functions for the Juraport installtion profile.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function juraport_install() {
+	// Theme variables
+	$base_theme = 'zen';	
+	$default_theme = 'juraport_theme';
+	$admin_theme = 'seven';
+
+ 	// Insert blocks
+ 	$blocks = juraport_default_block_settings($default_theme, $admin_theme);
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'title', 'cache'));
+  foreach ($blocks as $block) {
+    $query->values($block);
+  }
+  $query->execute();
+
+ 	// Insert a simple Basic page node content type (used for frontpage and footer-menu pages)
+  _juraport_add_basic_page_content_type();
+
+  // Don't display date and author information for "Basic page" nodes by default.
+  variable_set('node_submitted_page', FALSE);
+
+  // Create a default role for site administrators, with all available permissions assigned.
+  _juraport_add_administrator_role();
+
+	// Add the Juraport frontpage to the system
+  _juraport_add_frontpage();
+
+ 	// Add the footer-menu pages
+ 	_juraport_add_footer_menu_pages();
+
+ 	// Install default taxonomy terms
+	$vocabulary = taxonomy_vocabulary_machine_name_load('jura_category');
+ 	foreach (juraport_default_jura_category_terms() as $term_name) {
+		taxonomy_term_save(_juraport_prepare_term_object($vocabulary->vid, $term_name));
+ 	}
+ 	$vocabulary = taxonomy_vocabulary_machine_name_load('libraries');
+ 	foreach (juraport_default_library_terms() as $term_name) {
+ 		taxonomy_term_save(_juraport_prepare_term_object($vocabulary->vid, $term_name));
+ 	}
+
+ 	// Enable themes
+  $enable = array(
+  	'theme_default' => $default_theme,
+  	'admin_theme' => $admin_theme,
+  	$base_theme,
+  );	
+  theme_enable($enable);
+
+  // Disable uneeded themes
+  theme_disable(array('bartik'));
+
+ 	// Enable our default Juraport theme
+ 	variable_set('theme_default', $default_theme);
+
+ 	// Enable admin theme seven
+ 	variable_set('admin_theme', $admin_theme);
+
+ 	// Activate admin theme while editing a node
+ 	variable_set('node_admin_theme', '1');
+}
+
+/**
+ * Wrapper function to hold the default Jura categories.
+ */
+function juraport_default_jura_category_terms() {
+	return array(
+		'Arbejde Erhverv',
+		'Bolig',
+		'Familie Børn Unge',
+		'Forbug Økonomi',
+		'Kultur Fritid Skole',
+		'Politi Retsvæsen',
+		'Samfund Rettigheder',
+		'Transport Natur',
+	);
+}
+	
+/**
+ * Wrapper function to hold the default Library terms.
+ */
+function juraport_default_library_terms() {
+	return array(
+		'Vejle Bibliotekerne',
+		'Kolding Bibliotekerne',
+		'Esbjerg Kommunes Biblioteker',
+		'Risskov Bibliotek',
+		'Roskilde Bibliotek',
+		'Odense Centralbibliotek',
+		'Gentofte Bibliotekerne',
+		'Tønder Kommunes Biblioteker',
+		'Middelfart Bibliotek',
+		'Haderslev Bibliotekerne',
+	);
+}
+
+/**
+ * Helper function to prepare a simple term-object ready to be saved in the
+ * system with taxonomy_term_save().
+ */
+function _juraport_prepare_term_object($vid, $term_name) {
+	$term = new stdClass();
+	$term->vid = $vid;
+	$term->name = $term_name;
+	return $term;	
+}
+
+/**
+ * Wrapper function to hold default block settings.
+ */
+function juraport_default_block_settings($default_theme = 'juraport_theme', $admin_theme = 'seven') {
+	return array(
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content',
+      'pages' => '',
+      'title' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'search',
+      'delta' => 'form',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => -1,
+      'region' => 'sidebar_first',
+      'pages' => '',
+      'title' => st('Search'),
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'user',
+      'delta' => 'login',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'sidebar_second',
+      'pages' => '',
+      'title' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'help',
+      'pages' => '',
+      'title' => '',
+      'cache' => -1,
+    ),
+    array(
+    	'module' => 'menu',
+    	'delta' => 'menu-footer-menu',
+    	'theme' => $default_theme,
+    	'status' => 1,
+    	'weight' => 0,
+    	'region' => 'footer',
+    	'pages' => '',
+    	'title' => '<none>',
+    	'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content',
+      'pages' => '',
+      'title' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'help',
+      'pages' => '',
+      'title' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'user',
+      'delta' => 'login',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 10,
+      'region' => 'content',
+      'pages' => '',
+      'title' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'node',
+      'delta' => 'recent',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 10,
+      'region' => 'dashboard_main',
+      'pages' => '',
+      'title' => '',
+      'cache' => -1,
+    ),    
+    array(
+      'module' => 'user',
+      'delta' => 'new',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'dashboard_sidebar',
+      'pages' => '',
+      'title' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'search',
+      'delta' => 'form',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => -10,  
+      'region' => 'dashboard_sidebar',
+      'pages' => '',
+      'title' => '',
+      'cache' => -1,
+    ),            		
+	);
+}
+
+/**
+ * Adds the Basic page node content type.
+ */
+function _juraport_add_basic_page_content_type() {
+ 	$type = array(
+ 		'type' => 'page',
+ 		'name' => t('Basic page'),
+ 		'base' => 'node_content',
+    'description' => st("Use <em>basic pages</em> for your static content, such as an 'About us' page."),
+    'custom' => 1,
+    'modified' => 1,
+    'locked' => 0,
+ 	);
+ 	$type = node_type_set_defaults($type);
+ 	node_type_save($type);
+ 	node_add_body_field($type);
+ 	// RDF-mapping for basic page
+ 	$rdf_mapping = array(
+ 		'type' => 'node',
+ 		'bundle' => 'page',
+ 		'mapping' => array(	
+ 			'rdftype' => array('foaf:Document'),
+ 		),
+ 	);
+ 	rdf_mapping_save($rdf_mapping);
+}
+
+/**
+ * Adds the administrator role to the system.
+ */
+function _juraport_add_administrator_role() {
+  $admin_role = new stdClass();
+  $admin_role->name = 'administrator';
+  $admin_role->weight = 2;
+  user_role_save($admin_role);
+  user_role_grant_permissions($admin_role->rid, array_keys(module_invoke_all('permission')));
+  // Set this as the administrator role.
+  variable_set('user_admin_role', $admin_role->rid);
+  // Assign user 1 the "administrator" role.
+  db_insert('users_roles')
+    ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
+    ->execute(); 	
+}
+
+/**
+ * Adds the Juraport frontpage to the system
+ */
+function _juraport_add_frontpage() {
+	$node = new stdClass();	
+	// Created by administrator
+	$node->uid = 1;	
+
+	$node->title = 'Frontpage';
+	$node->type = 'page';
+	$node->language = LANGUAGE_NONE;
+	$node->body = array(
+		'und' => array(
+			array(
+				'value' => '<h2>Bibliotekernes JURAPORT</h2><p>Er et tilbud fra bibliotekerne til dem der har brug for en håndsrækning til hverdagens juridiske spørgsmål.</p><p>Ved hver af de juridiske emner på Bibliotekernes JURAPORT finder du også selvbetjeningsløsnin-ger, der passer til.</p><h2>Sådan finder du svar</h2><p>Få overblik over alle emner fra Aktindsigt til Ægteskab i emneoversigten. Du kan også se en alfabetisk liste eller søge med dine egne ord. Det er nemt og hurtigt. </p><p><em>JURAPORT: Din guide til juridiske resurser - på nettet og i biblioteket</em></p>',
+				'summary' => '',
+				'format' => 'full_html',
+			),
+		),
+	);
+
+	$node->path['pathauto'] = FALSE;
+
+ 	node_save($node);
+
+ 	$path = array(
+ 		'source' => 'node/' . $node->nid,	
+ 		'alias' => 'juraport-frontpage',
+ 	);
+ 	path_save($path);
+
+ 	// Save the frontpage and; remember to use the internal path :)
+ 	variable_set('site_frontpage', 'node/' . $node->nid);
+}
+
+/**
+ * Adds pages to the footer menu
+ */
+function _juraport_add_footer_menu_pages() {
+	// Om juraport
+	_juraport_add_footer_menu_page('Om juraport', 'om-juraport');
+
+	// Spørg om jura
+	_juraport_add_footer_menu_page('Spørg om jura', 'spoerg-om-jura');
+
+	// Jura links
+	_juraport_add_footer_menu_page('Jura links', 'jura-links');
+
+	// Domme på nettet
+	_juraport_add_footer_menu_page('Domme på nettet', 'domme-paa-nettet');
+
+	// Kontakt
+	_juraport_add_footer_menu_page('Kontakt', 'kontakt');
+
+	// Update the menu router information.
+  menu_rebuild();	
+}
+
+/**
+ * Adds a single footer-menu page with specified $title and $path (alias).
+ */
+function _juraport_add_footer_menu_page($title, $path) {
+	$node = new stdClass();
+	$node->title = $title;
+	$node->type = 'page';
+	$node->uid = 1;
+	$node->language = LANGUAGE_NONE;
+	$node->path['pathauto'] = FALSE;
+	node_save($node);
+	$item = array(
+		'link_title' => $title,
+		'link_path' => 'node/' . $node->nid,
+		'menu_name' => 'menu-footer-menu',
+	);
+	menu_link_save($item);
+ 	$path = array(
+ 		'source' => 'node/' . $node->nid,	
+ 		'alias' => $path,
+ 	);
+ 	path_save($path);	
+}

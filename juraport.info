@@ -1,0 +1,41 @@
+name = Juraport
+description = Install a Juraport site.
+core = 7.x
+
+; Core modules
+dependencies[] = block
+dependencies[] = translation
+dependencies[] = contextual
+dependencies[] = dashboard
+dependencies[] = dblog
+dependencies[] = field_ui
+dependencies[] = block
+dependencies[] = image
+dependencies[] = help
+dependencies[] = number
+dependencies[] = taxonomy
+dependencies[] = overlay
+dependencies[] = path
+dependencies[] = rdf
+dependencies[] = search
+dependencies[] = shortcut
+dependencies[] = user
+
+; Contributed modules
+dependencies[] = admin_menu
+dependencies[] = admin_menu_toolbar
+dependencies[] = diff
+dependencies[] = module_filter
+dependencies[] = redirect
+dependencies[] = token
+dependencies[] = panels
+dependencies[] = page_manager
+dependencies[] = views
+dependencies[] = backup_migrate
+dependencies[] = uuid
+dependencies[] = elements
+
+; Juraport modules
+dependencies[] = juraport_base
+dependencies[] = juraport_jura_subject
+dependencies[] = juraport_user
