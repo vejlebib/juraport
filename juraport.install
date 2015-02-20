@@ -77,7 +77,7 @@ function juraport_default_jura_category_terms() {
 		'Arbejde Erhverv',
 		'Bolig',
 		'Familie Børn Unge',
-		'Forbug Økonomi',
+		'Forbrug Økonomi',
 		'Kultur Fritid Skole',
 		'Politi Retsvæsen',
 		'Samfund Rettigheder',
