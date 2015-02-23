@@ -295,7 +295,7 @@ function _juraport_add_frontpage() {
 	// Created by administrator
 	$node->uid = 1;	
 
-	$node->title = 'Frontpage';
+	$node->title = 'Forside';
 	$node->type = 'page';
 	$node->language = LANGUAGE_NONE;
 	$node->body = array(
