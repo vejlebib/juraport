@@ -7,7 +7,6 @@ dependencies[] = block
 dependencies[] = translation
 dependencies[] = contextual
 dependencies[] = dashboard
-dependencies[] = dblog
 dependencies[] = field_ui
 dependencies[] = block
 dependencies[] = image
