@@ -11,7 +11,7 @@
  */
 function juraport_install() {
 	// Theme variables
-	$base_theme = 'zen';	
+	$base_theme = 'zen';
 	$default_theme = 'juraport_theme';
 	$admin_theme = 'seven';
 
@@ -341,6 +341,9 @@ function _juraport_add_footer_menu_pages() {
 	// Kontakt
 	_juraport_add_footer_menu_page('Kontakt', 'kontakt');
 
+  // Love på nettet.
+  _juraport_add_footer_menu_page('Love på nettet', 'love-paa-nettet');
+
 	// Update the menu router information.
   menu_rebuild();	
 }
@@ -367,4 +370,11 @@ function _juraport_add_footer_menu_page($title, $path) {
  		'alias' => $path,
  	);
  	path_save($path);	
+}
+
+/**
+ * Add new footer-menu page 'Love på nettet'.
+ */
+function juraport_update_7001(&$sandbox) {
+  _juraport_add_footer_menu_page('Love på nettet', 'love-paa-nettet');  
 }
