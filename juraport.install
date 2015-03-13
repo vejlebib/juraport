@@ -437,8 +437,76 @@ function _juraport_add_footer_menu_page($title, $path) {
 }
 
 /**
- * Add new footer-menu page 'Love på nettet'.
+ * Helper function to enable a block in the system
+ */
+function _juraport_enable_block($block) {
+  // Check to see if the block is already saved in the datatbase
+  $result = db_select('block', 'b')
+    ->fields('b')
+    ->condition('b.module', $block['module'])
+    ->condition('b.delta', $block['delta'])
+    ->condition('b.theme', $block['theme'])
+    ->execute();
+  // If the block is already there, do an update:
+  if ($result->rowCount() > 0) {
+    db_update('block')
+      ->fields(array(
+        'status' => $block['status'],
+        'weight' => $block['weight'],
+        'region' => $block['region'],
+        'pages' => $block['pages'],
+        'title' => $block['title'],
+      ))
+      ->condition('module', $block['module'])
+      ->condition('delta', $block['delta'])
+      ->condition('theme', $block['theme']) 
+      ->execute();     
+  }
+  // Else normal insert:
+  else {
+    db_insert('block')
+      ->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'title', 'cache'))
+      ->values($block)
+      ->execute();
+  }
+}
+
+/**
+ * - Adds new footer-menu page 'Love på nettet' 
+ * - Enables the Jura subject overview and Juraport information box viewer 
+ * blocks in the system.
+ * - Adds the field_juraport_information_box field to the page node type.
  */
 function juraport_update_7001(&$sandbox) {
-  _juraport_add_footer_menu_page('Love på nettet', 'love-paa-nettet');  
+  _juraport_add_footer_menu_page('Love på nettet', 'love-paa-nettet');
+
+  $blocks = array(
+    array(
+      'module' => 'juraport_jura_subject',
+      'delta' => 'jura_subject_overview',
+      'theme' => 'juraport_theme',
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'sidebar_first',
+      'pages' => '',
+      'title' => '',
+      'cache' => 8,
+    ),
+    array(
+      'module' => 'juraport_jura_subject',
+      'delta' => 'juraport_info_box_viewer',
+      'theme' => 'juraport_theme',
+      'status' => 1,
+      'weight' => -40,
+      'region' => 'sidebar_second',
+      'pages' => '',
+      'title' => '',
+      'cache' => 4,
+    ),
+  );
+  foreach ($blocks as $block) {
+    _juraport_enable_block($block);
+  }
+
+  _juraport_add_information_box_field();
 }
