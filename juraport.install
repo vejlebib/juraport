@@ -25,6 +25,8 @@ function juraport_install() {
 
  	// Insert a simple Basic page node content type (used for frontpage and footer-menu pages)
   _juraport_add_basic_page_content_type();
+  // Add the field_information_box field to basic page
+  _juraport_add_information_box_field();
 
   // Don't display date and author information for "Basic page" nodes by default.
   variable_set('node_submitted_page', FALSE);
@@ -290,6 +292,46 @@ function _juraport_add_basic_page_content_type() {
  		),
  	);
  	rdf_mapping_save($rdf_mapping);
+}
+
+/**
+ * Adds the field_juraport_information_box field to page node type
+ */
+function _juraport_add_information_box_field() {
+  // The field base is already created by juraport_jura_subject
+  field_create_instance(array(
+    'entity_type' => 'node',
+    'bundle' => 'page',
+    'field_name' => 'field_juraport_information_box',
+    'label' => 'Information box',
+    'description' => '',
+    'deleted' => 0,
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 43,
+    ),
+  ));
 }
 
 /**
