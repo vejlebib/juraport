@@ -482,6 +482,7 @@ function _juraport_enable_block($block) {
  * - Updates every jura_subject node and corresponding URL-alias to danish
  * language, to avoid language conflicts. Danish is default language after
  * this update, so this shouldn't be needed in the future.
+ * - Enables the Entity reference module.
  */
 function juraport_update_7001(&$sandbox) {
   _juraport_add_footer_menu_page('Love på nettet', 'love-paa-nettet');
@@ -529,4 +530,6 @@ function juraport_update_7001(&$sandbox) {
     $path['language'] = 'da';
     path_save($path);
   }
+
+  module_enable(array('entityreference'), TRUE);
 }
