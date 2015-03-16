@@ -298,40 +298,44 @@ function _juraport_add_basic_page_content_type() {
  * Adds the field_juraport_information_box field to page node type
  */
 function _juraport_add_information_box_field() {
-  // The field base is already created by juraport_jura_subject
-  field_create_instance(array(
-    'entity_type' => 'node',
-    'bundle' => 'page',
-    'field_name' => 'field_juraport_information_box',
-    'label' => 'Information box',
-    'description' => '',
-    'deleted' => 0,
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
+  if (!field_info_instance('node', 'field_juraport_information_box', 'page')) {
+    // The field base is already created by juraport_jura_subject in a feature,
+    // so we just create an instance on the page type here.
+    $instance = array(
+      'entity_type' => 'node',
+      'bundle' => 'page',
+      'field_name' => 'field_juraport_information_box',
+      'label' => 'Information box',
+      'description' => '',
+      'deleted' => 0,
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 8,
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
       ),
-    ),
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'field_collection',
-      'settings' => array(),
-      'type' => 'field_collection_embed',
-      'weight' => 43,
-    ),
-  ));
+      'widget' => array(
+        'active' => 0,
+        'module' => 'field_collection',
+        'settings' => array(),
+        'type' => 'field_collection_embed',
+        'weight' => 43,
+      ),
+    );
+    field_create_instance($instance);
+  }
 }
 
 /**
