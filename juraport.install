@@ -28,9 +28,6 @@ function juraport_install() {
   // Add the field_information_box field to basic page
   _juraport_add_information_box_field();
 
-  // Don't display date and author information for "Basic page" nodes by default.
-  variable_set('node_submitted_page', FALSE);
-
   // Create a default role for site administrators, with all available permissions assigned.
   _juraport_add_administrator_role();
 
@@ -292,6 +289,8 @@ function _juraport_add_basic_page_content_type() {
  		),
  	);
  	rdf_mapping_save($rdf_mapping);
+  // Don't display date and author information for "Basic page" nodes by default.
+  variable_set('node_submitted_page', FALSE);
 }
 
 /**
