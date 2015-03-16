@@ -479,6 +479,9 @@ function _juraport_enable_block($block) {
  * - Enables the Jura subject overview and Juraport information box viewer 
  * blocks in the system.
  * - Adds the field_juraport_information_box field to the page node type.
+ * - Updates every jura_subject node and corresponding URL-alias to danish
+ * language, to avoid language conflicts. Danish is default language after
+ * this update, so this shouldn't be needed in the future.
  */
 function juraport_update_7001(&$sandbox) {
   _juraport_add_footer_menu_page('Love på nettet', 'love-paa-nettet');
@@ -512,4 +515,18 @@ function juraport_update_7001(&$sandbox) {
   }
 
   _juraport_add_information_box_field();
+
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'jura_subject')
+    ->execute();
+  $nodes = node_load_multiple(array_keys($result['node']));
+  foreach ($nodes as $node) {
+    $node->language = 'da';
+    $node->path['pathauto'] = FALSE;
+    node_save($node);
+    $path = path_load('node/' . $node->nid);
+    $path['language'] = 'da';
+    path_save($path);
+  }
 }
