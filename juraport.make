@@ -56,8 +56,3 @@ projects[juraport_jura_subject][type] = "module"
 projects[juraport_jura_subject][download][type] = "git"
 projects[juraport_jura_subject][download][url] = "https://github.com/vejlebib/juraport_jura_subject.git"
 projects[juraport_jura_subject][download][branch] = "master"
-
-projects[juraport_user][type] = "module"
-projects[juraport_user][download][type] = "git"
-projects[juraport_user][download][url] = "https://github.com/vejlebib/juraport_user.git"
-projects[juraport_user][download][branch] = "master"
