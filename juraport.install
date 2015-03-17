@@ -483,6 +483,7 @@ function _juraport_enable_block($block) {
  * language, to avoid language conflicts. Danish is default language after
  * this update, so this shouldn't be needed in the future.
  * - Enables the Entity reference module.
+ * - Disables and uinstalls the taxonomy_permissions module.
  */
 function juraport_update_7001(&$sandbox) {
   _juraport_add_footer_menu_page('Love på nettet', 'love-paa-nettet');
@@ -532,4 +533,7 @@ function juraport_update_7001(&$sandbox) {
   }
 
   module_enable(array('entityreference'), TRUE);
+
+  module_disable(array('taxonomy_permissions'), FALSE);
+  drupal_uninstall_modules(array('taxonomy_permissions'));
 }
