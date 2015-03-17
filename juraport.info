@@ -1,7 +1,7 @@
 name = Juraport
 description = Install a Juraport site.
 core = 7.x
-version = 7.x-0.1.0
+version = 7.x-0.2.0
 
 ; Core modules
 dependencies[] = block

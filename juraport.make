@@ -44,15 +44,15 @@ projects[zen][version] = "5.5"
 projects[juraport_theme][type] = "theme"
 projects[juraport_theme][download][type] = "git"
 projects[juraport_theme][download][url] = "https://github.com/vejlebib/juraport_theme.git"
-projects[juraport_theme][download][branch] = "master"
+projects[juraport_theme][download][tag] = "7.x-0.2.0"
 
 ; Juraport modules
 projects[juraport_base][type] = "module"
 projects[juraport_base][download][type] = "git"
 projects[juraport_base][download][url] = "https://github.com/vejlebib/juraport_base.git"
-projects[juraport_base][download][branch] = "master"
+projects[juraport_base][download][tag] = "7.x-0.2.0"
 
 projects[juraport_jura_subject][type] = "module"
 projects[juraport_jura_subject][download][type] = "git"
 projects[juraport_jura_subject][download][url] = "https://github.com/vejlebib/juraport_jura_subject.git"
-projects[juraport_jura_subject][download][branch] = "master"
+projects[juraport_jura_subject][download][tag] = "7.x-0.2.0"
