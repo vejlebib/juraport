@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Juraport user feature.
+ */
+
+include_once 'juraport_user.features.inc';

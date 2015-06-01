@@ -1,0 +1,215 @@
+<?php
+/**
+ * @file
+ * Code for the Juraport jura subject feature.
+ */
+
+include_once 'juraport_jura_subject.features.inc';
+
+/**
+ * Implements template_preprocess_juraport_jura_subject_view_column_overview()
+ *
+ * Prepare each column with rows for the view template.
+ */
+function template_preprocess_juraport_jura_subject_view_column_overview(&$variables) {
+	$columns = array();
+	$column_number = 1;
+	$column_count = $variables['options']['columns'];
+	$rows = $variables['rows'];
+	// The (minimum) number of rows to go in each column
+	$column_row_count = floor(count($rows) / $column_count);
+	// If number of rows doesn't fit evenly in each column, we fill the extra
+	// rows in columns from left to right.
+	$extra = count($rows) % $column_count;
+	// Control position in array (for array_slice)
+	$offset = 0;
+
+	// Populate the columns
+	while ($offset < count($rows)) {
+		$current_column_row_count = $column_row_count;
+		// Do we need an extra row in this column?
+		if ($extra) {
+			$current_column_row_count++;
+			$extra--;
+		}
+		$column_class = 'jura-subject-overview-column-' . $column_number;
+		$columns[$column_class]['rows'] = array_slice($rows, $offset, $current_column_row_count);
+		$column_number++;
+		$offset += $current_column_row_count;
+	}
+
+	// Pass the populated columns on to the views template
+	$variables['columns'] = $columns;
+
+	// Add some very basic default CSS.
+	// We add it as inline because we need a dynamic column width.
+	$column_width = (100 / $column_count) . '%';
+	$css_options = array('group' => CSS_DEFAULT, 'type' => 'inline');
+	$css = ".jura-subject-overview .jura-subject-overview-column { width: $column_width; float: left; }";
+	drupal_add_css($css, $css_options);
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function juraport_jura_subject_preprocess_node(&$variables) {
+	$node = $variables['node'];
+	// Override the $submitted node template variable, with data from the
+	// maintained_by field on Jura subject nodes.
+	if ($node->type == 'jura_subject') {
+		// Disable maintained by, by default (it might not be set)
+		$variables['display_maintained_by'] = FALSE;
+
+		// Check to see if a maintainer is set on this jura_subject node
+		$node_wrapper = entity_metadata_wrapper('node', $node);
+		$account = $node_wrapper->field_jura_subject_maintained_by->value();
+		if (!empty($account)) {
+			// We will always have a juraport_editor profile here, because our custom
+			// entityreference selection view filters users without.
+			$profile = profile2_load_by_user($account, 'juraport_editor');
+			// Prepare metadata wrappers to setup the maintained_by message.
+			$profile_wrapper = entity_metadata_wrapper('profile2', $profile);
+			$library = taxonomy_term_load($profile_wrapper->field_jura_editor_library->getIdentifier());
+			$library_wrapper = entity_metadata_wrapper('taxonomy_term', $library);
+			$employed = $profile_wrapper->field_jura_editor_employed->value();
+
+			// Setup the maintained_by message
+			$variables['maintained_by'] = t('Maintained by @first_name @sur_name @employed at @libray', array(
+				'@first_name' => $profile_wrapper->field_jura_editor_firstname->value(),
+				'@sur_name' => $profile_wrapper->field_jura_editor_surname->value(),
+				'@employed' => $employed ? t('employee') : t('former employee'),
+				'@libray' => $library_wrapper->name->value(),
+			));
+			$variables['last_updated'] = array(
+				'#prefix' => '<br>',
+				'#theme' => 'html_tag',
+				'#tag' => 'time',
+				'#value' => t('Last updated: !updated', array(
+					'!updated' => format_date($node->changed, 'long'),
+				)),
+				'#attributes' => array(
+					'datetime' => format_date($node->changed, 'custom', 'c'),
+				),
+			);
+			
+			$variables['display_maintained_by'] = TRUE;
+		}
+	}
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function juraport_jura_subject_block_info() {
+	$blocks = array();
+
+	$blocks['jura_subject_overview'] = array(
+		'info' => t('Jura subject overview'),
+		'cache' => DRUPAL_CACHE_GLOBAL,
+	);
+	// The functionality this block provides together with the information box
+	// field collection feature, would probably make more sense to have in its
+	// own module, as it not only concerns jura_subject node types, but also the
+	// basic_page node type.
+	// TODO: Make new module juraport_info_box which isolate the information box
+	// functionality. This new module should depend on juraport_jura_subject 
+	// (this module) and juraport_base (the basic page needs to be moved from
+	// the installation profile to juraport_base as a feature in this case).
+	$blocks['juraport_info_box_viewer'] = array(
+		'info' => t('Juraport information box viewer'),
+		'cache' => DRUPAL_CACHE_PER_PAGE,
+	);
+
+	return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function juraport_jura_subject_block_view($delta = '') {
+	$block = array();
+
+	switch ($delta) {
+		case 'jura_subject_overview':
+			$block['subject'] = t('Overview');
+			$block['content'] = l(t('Jura subject overview'), 'emneoversigt', array(
+				'attributes' => array(
+					'class' => array('jura-subject-overview-link'),
+				),
+			));
+			// Build a form with 2 ctools jump menus
+			$form = drupal_get_form('juraport_jura_subject_jump_menu_form');
+			$block['content'] .= drupal_render($form);
+			break;
+		case 'juraport_info_box_viewer':
+			$block['subject'] = t('Information');
+			$block['content'] = juraport_jura_subject_get_information_boxes();
+			break;
+	}
+
+	return $block;
+}
+
+/**
+ * Form builder; builds a form with two ctools jump menus.
+ */
+function juraport_jura_subject_jump_menu_form($form, &$form_state) {
+	ctools_include('jump-menu');
+	$options = array();
+
+	// Get all jura catogories saved in the system
+	$vocabulary = taxonomy_vocabulary_machine_name_load('jura_category');
+	$categories = taxonomy_get_tree($vocabulary->vid);
+	foreach ($categories as $category) {
+		$url = url('taxonomy/term/' . $category->tid);
+		$options[$url] = $category->name;
+	}
+	$form['jura_category_jump_menu'] = ctools_jump_menu(array(), $form_state, $options, array(
+		'hide' => TRUE,
+		'inline' => FALSE,
+		'choose' => t('- Choose a category -'),
+	));
+
+	// Get all jura subjects in the system using EntityFieldQuery
+	$query = new EntityFieldQuery();
+	$options = array();
+	$query->entityCondition('entity_type', 'node')
+		->entityCondition('bundle', 'jura_subject')
+		->propertyCondition('status', NODE_PUBLISHED)
+		->propertyOrderBy('title');
+	$result = $query->execute();
+	$nodes = node_load_multiple(array_keys($result['node']));
+	foreach ($nodes as $node) {
+		$url = url('node/' . $node->nid);
+		$options[$url] = $node->title;
+	}
+	$form['jura_subject_jump_menu'] = ctools_jump_menu(array(), $form_state, $options, array(
+		'hide' => TRUE,
+		'inline' => FALSE,
+		'choose' => t('- Choose a subject -'),
+	));
+	return $form;
+}
+
+/**
+ * Returns a render-array with the information boxes for the current page.
+ */
+function juraport_jura_subject_get_information_boxes() {
+	$boxes = array();
+	// Only do something if the current page is a node
+	if ($node = menu_get_object()) {
+		// We could have used entity metadata wrapper, but in this case the normal
+		// Drupal way is actually much cleaner.
+		$items = field_get_items('node', $node, 'field_juraport_information_box');
+		if (!empty($items)) {
+			foreach ($items as $item) {
+				$boxes[] = field_view_value('node', $node, 'field_juraport_information_box', $item, array(
+					// Use the formatter that only renders the fields of the collection.
+					// See: field_collection_field_formatter_info()
+					'type' => 'field_collection_fields',
+				));
+			}
+		}
+	}
+	return $boxes;
+}
