@@ -32,6 +32,19 @@
 
     <?php print render($page['header']); ?>
 
+    <?php 
+      // Render the navgation bar to see if there's anything in it.
+      $navigation_bar = render($page['navigation']);
+    ?>
+
+    <?php if ($navigation_bar): ?>
+      <div class="navigation">
+        <nav id="navigation-bar" role="navigation">
+          <?php print $navigation_bar; ?>
+        </nav>
+      </div>
+    <?php endif; ?>
+
   </header>
 
   <div id="main">
