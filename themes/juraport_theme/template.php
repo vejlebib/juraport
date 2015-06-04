@@ -191,3 +191,17 @@ function juraport_theme_preprocess_block(&$variables, $hook) {
   //}
 }
 // */
+
+/**
+ * Implements hook_page_alter().
+ */
+function juraport_theme_page_alter(&$page) {
+  // Logged in
+  if (!empty($page['content']['system_main']['content']['search_form'])) {
+    unset($page['content']['system_main']['content']['search_form']);
+  }
+  // Not logged in
+  if (!empty($page['content']['system_main']['search_form'])) {
+    unset($page['content']['system_main']['search_form']);
+  }  
+}
