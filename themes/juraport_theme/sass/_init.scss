@@ -97,10 +97,22 @@ $font-monospace:   $courier;
 //
 // Colors, etc.
 //
-$background-color: #a8bbdb;
-$header-background-color: #546696;
-$footer-background-color: #736596;
-$header-text-color: #330033;
+$background-color:               #a8bbdb;
+$header-background-color:        #546696;
+$footer-background-color:        #736596;
+$header-text-color:              #330033;
+$white:                          #fff;
+$black:                          #000;
+$gray:                           #d5d5d5;
+$gray-light:                     lighten($gray, 10%);
+$gray-lighter:                   lighten($gray, 15%);
+$gray-dark:                      darken($gray, 10%);
+$gray-darker:                    darken($gray, 25%);
+$gray-darkest:                   darken($gray, 35%);
+$red:                            #a32e10;
+$green:                          #528c10;
+$yellow:                         #f0cb28;
+$blue:                           #00caff;
 
 // The amount lists, blockquotes and comments are indented.
 $indent-amount: 30px;
