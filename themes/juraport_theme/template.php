@@ -16,8 +16,9 @@
  *   The name of the template being rendered ("page" in this case.)
  */
 function juraport_theme_preprocess_page(&$variables, $hook) {
-  // Hide the title on the frontpage since we're using a basic page node type.
-  if ($variables['is_front']) {
+  // Hide title on frontpage since we're using a basic page node type.
+  // Hide title on search page since we have no advanced search.
+  if ($variables['is_front'] || arg(0) == 'search') {
     $variables['title'] = FALSE;
   }
 }
