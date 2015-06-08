@@ -1134,9 +1134,9 @@ tr.selected td {
     &:after {
       position: absolute;
       right: 0.5em;
-      top: 0.3em;
+      top: 0.5em;
       font-family: $base-icon-library-font;
-      color: $header-background-color;
+      color: $white;
       content: $fa-var-chevron-down;
     }
   }
