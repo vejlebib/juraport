@@ -103,9 +103,13 @@ function juraport_jura_subject_preprocess_node(&$variables) {
 function juraport_jura_subject_block_info() {
 	$blocks = array();
 
-	$blocks['jura_subject_overview'] = array(
+	$blocks['juraport_jura_subject_overview'] = array(
 		'info' => t('Jura subject overview'),
 		'cache' => DRUPAL_CACHE_GLOBAL,
+	);
+	$blocks['juraport_jura_subject_jumper'] = array(
+		'info' => t('Jura subject jumper'),
+		'cache' => DRUPAL_CACHE_PER_PAGE,
 	);
 	// The functionality this block provides together with the information box
 	// field collection feature, would probably make more sense to have in its
@@ -130,16 +134,18 @@ function juraport_jura_subject_block_view($delta = '') {
 	$block = array();
 
 	switch ($delta) {
-		case 'jura_subject_overview':
+		case 'juraport_jura_subject_overview':
 			$block['subject'] = t('Overview');
 			$block['content'] = l(t('Jura subject overview'), 'emneoversigt', array(
 				'attributes' => array(
 					'class' => array('jura-subject-overview-link'),
 				),
 			));
-			// Build a form with 2 ctools jump menus
+			break;
+		case 'juraport_jura_subject_jumper':
 			$form = drupal_get_form('juraport_jura_subject_jump_menu_form');
-			$block['content'] .= drupal_render($form);
+			$block['subject'] = t('Select Jura subject');
+			$block['content'] = drupal_render($form);
 			break;
 		case 'juraport_info_box_viewer':
 			$block['subject'] = t('Information');
