@@ -126,14 +126,23 @@ function juraport_theme_menu_tree__menu_footer_menu(&$variables) {
  * Implements hook_page_alter().
  */
 function juraport_theme_page_alter(&$page) {
-  // Logged in
+  // Remove advanced search for logged in users.
   if (!empty($page['content']['system_main']['content']['search_form'])) {
     unset($page['content']['system_main']['content']['search_form']);
   }
-  // Not logged in
+  // Remove advanced search for not logged in users.
   if (!empty($page['content']['system_main']['search_form'])) {
     unset($page['content']['system_main']['search_form']);
   }  
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function juraport_theme_form_search_block_form_alter(&$form, &$form_state) {
+  // Perform some simple alterations on the Search block form.
+  $form['search_block_form']['#attributes']['placeholder'] = t('Search Juraport...');
+  $form['search_block_form']['#field_prefix'] = '<i class="fa fa-search fa-lg"></i>';
 }
 
 /**
