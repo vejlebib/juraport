@@ -45,6 +45,7 @@ $zen-auto-include-item-base: false;
 
 /* Containers for grid items and flow items. */
 #header,
+#navigation-bar,
 #main,
 #footer {
   @include zen-grid-container();
@@ -150,8 +151,31 @@ $zen-auto-include-item-base: false;
     }
   }
 
+  $zen-columns: 6 !global;
+
+  #navigation-bar {
+
+    /* Apply the shared properties of grid items in a single, efficient ruleset. */
+    .block {
+      @include zen-grid-item-base();
+    }
+
+    .block:nth-child(1) {
+      @include zen-grid-item(2, 1);
+      @include zen-new-row();
+    }
+
+    .block:nth-child(2) {
+      @include zen-grid-item(2, 3);
+    }
+
+    .block:nth-child(3) {
+      @include zen-grid-item(2, 5);
+    }
+
+  }
+
   #footer {
-    $zen-columns: 6 !global;
 
     li.menu__item:nth-child(1) {
       @include zen-grid-item(1, 1);
