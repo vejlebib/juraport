@@ -1117,11 +1117,14 @@ tr.selected td {
 
   .form-type-select {
     position: relative;
-    /* This is an easy fix for allowing click events being passed through the */
-    /* after-element to the select box below. */
-    /* This doesn't work in IE though, so a javascript solution might need to */
-    /* replace this in the future. See: */
-    /* http://stackoverflow.com/questions/5855135/css-pointer-events-property-alternative-for-ie */
+
+    /**
+     * This is an easy fix for allowing click events being passed through the
+     * after-element to the select box below.
+     * This doesn't work in IE though, so a javascript solution might need to
+     * replace this in the future. For more information See:
+     * http://stackoverflow.com/questions/5855135/css-pointer-events-property-alternative-for-ie
+     */
     pointer-events: none;
 
     /* Arrows in select box */
@@ -1138,8 +1141,7 @@ tr.selected td {
   /* Jump menus */
   select {
     @include appearance(none);
-    overflow: hidden;
-    text-overflow: ellipsis;
+    @include text-truncate();
     text-align: center; // Doesn't work in webkit and IE9 and below
     pointer-events: all;
     height: 2.5625em; // 41px/16px (Need same height (+ padding and borders) as search-bar).
@@ -1151,6 +1153,10 @@ tr.selected td {
     &::-ms-expand {
       display: none;
     }
+  }
+
+  .form-type-select {
+    height: 2.5625em; // Appearently webkit needs this explicitly.
   }
 
 }
