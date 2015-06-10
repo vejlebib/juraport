@@ -1100,6 +1100,8 @@ tr.selected td {
     line-height: normal;
     @include box-sizing(border-box);
     @include sassy-button("flat", 0, $base-font-size, $header-background-color);
+    border: 2px solid $white;
+    padding: 0.625em;
     text-align: center;
     &:active, &.active {
       font-weight: normal;
