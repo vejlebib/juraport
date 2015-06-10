@@ -222,8 +222,18 @@
 /**
  * Navigation bar.
  */
-#navigation {
-  
+#navigation-bar {
+  @include output-rhythm(margin, rhythm(0.5) 0);
+
+  .region {
+    @include clearfix();
+  }
+
+  .form-item,
+  .block {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 /**
