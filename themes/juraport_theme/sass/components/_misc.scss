@@ -1166,13 +1166,30 @@ tr.selected td {
  */
 #search-block-form {
 
+  color: $white;
+  position: relative;
+
   input {
-   padding: 0.625em; // 10px/16px (Use a larger padding for the search bar textfield)  
+    background-color: $header-background-color;
+    border: 2px solid $white;
+    padding: 0.625em;
+    padding-left: 40px;
+  }
+
+  i.fa {
+    position: absolute;
+    top: 12px;
+    left: 10px;
   }
 
   .form-submit {
+    position: absolute;
+    width: auto;
+    height: 100%;
+    top: 0;
+    right: 0;
+    padding: 0.625em 1em;
     border: 2px solid $white;
-    padding: 0.625em; // 10px/16px (Use a larger padding for the search bar textfield)
   }
 
 }
