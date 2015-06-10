@@ -38,6 +38,7 @@
     ?>
 
     <?php if ($navigation_bar): ?>
+      <hr/>
       <div class="navigation">
         <nav id="navigation-bar" role="navigation">
           <?php print $navigation_bar; ?>
