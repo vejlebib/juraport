@@ -16,6 +16,16 @@ function juraport_base_date_formats() {
       'format' => 'j. M Y - H:i',
       'locales' => array(''),
     ),
+    array(
+      'type' => 'juraport_date_only',
+      'format' => 'l j. F',
+      'locales' => array(),
+    ),
+    array(
+      'type' => 'juraport_time_only',
+      'format' => 'G:i',
+      'locales' => array(),
+    ),
   );
 }
 
