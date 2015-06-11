@@ -30,6 +30,7 @@ dependencies[] = token
 dependencies[] = panels
 dependencies[] = page_manager
 dependencies[] = views
+dependencies[] = views_ui
 dependencies[] = backup_migrate
 dependencies[] = uuid
 dependencies[] = elements
