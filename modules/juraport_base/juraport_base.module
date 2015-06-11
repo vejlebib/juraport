@@ -30,6 +30,16 @@ function juraport_base_date_formats() {
 }
 
 /**
+ * Implements hook_date_format_types().
+ */
+function juraport_base_date_format_types() {
+  return array(
+    'juraport_date_only' => t('Juraport date only'),
+    'juraport_time_only' => t('Juraport time only'),
+  );
+}
+
+/**
  * Define site roles in code.
  *
  * @return
