@@ -27,7 +27,7 @@ $zen-auto-include-item-base: false;
  * For screen sizes larger than 1200px, prevent excessively long lines of text
  * by setting a max-width.
  */
-#page,  
+#page,
 .region-bottom {
   margin: 10px auto;
   max-width: 1200px;
@@ -56,8 +56,9 @@ $zen-auto-include-item-base: false;
  */
 @media all and (min-width: 480px) and (max-width: 959px) {
 
-  .region-sidebar-second {
-    $zen-columns: 2 !global;
+  $zen-columns: 2 !global;
+
+  .region-sidebar-first {
 
     /* Apply the shared properties of grid items in a single, efficient ruleset. */
     .block {
@@ -74,8 +75,32 @@ $zen-auto-include-item-base: false;
     }
   }
 
+  #navigation-bar {
+
+    /* Apply the shared properties of grid items in a single, efficient ruleset. */
+    .block {
+      @include zen-grid-item-base();
+    }
+
+    .block:nth-child(1) {
+      @include zen-grid-item(1, 1);
+      @include zen-new-row();
+    }
+
+    .block:nth-child(2) {
+      @include zen-grid-item(1, 2);
+    }
+
+    .block:nth-child(3) {
+      @include zen-grid-item(2, 1);
+      @include zen-new-row();
+    }
+
+  }  
+
   /* Footer menu layout: 3 menu items per row on tablets */
   #footer {
+
     $zen-columns: 3 !global;
 
     li.menu__item:nth-child(3n+1) {
@@ -154,11 +179,6 @@ $zen-auto-include-item-base: false;
   $zen-columns: 6 !global;
 
   #navigation-bar {
-
-    /* Apply the shared properties of grid items in a single, efficient ruleset. */
-    .block {
-      @include zen-grid-item-base();
-    }
 
     .block:nth-child(1) {
       @include zen-grid-item(2, 1);
