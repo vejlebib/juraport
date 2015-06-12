@@ -27,7 +27,7 @@ function juraport_jura_subject_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_law_rules_text',
-    'label' => 'Teskt',
+    'label' => 'Tekst',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -972,7 +972,6 @@ function juraport_jura_subject_field_default_field_instances() {
   t('Redigeres af');
   t('Selvbetjening på nettet');
   t('Tekst');
-  t('Teskt');
   t('Titel');
 
   return $field_instances;

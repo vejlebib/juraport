@@ -85,7 +85,7 @@ function juraport_jura_subject_preprocess_node(&$variables) {
 				'#theme' => 'html_tag',
 				'#tag' => 'time',
 				'#value' => t('Last updated: !updated', array(
-					'!updated' => format_date($node->changed, 'long'),
+					'!updated' => format_date($node->changed, 'juraport_date_only'),
 				)),
 				'#attributes' => array(
 					'datetime' => format_date($node->changed, 'custom', 'c'),

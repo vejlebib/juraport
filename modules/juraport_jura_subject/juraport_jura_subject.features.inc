@@ -33,7 +33,7 @@ function juraport_jura_subject_node_info() {
       'base' => 'node_content',
       'description' => t('The main content type of this site to hold detailed information about each jura subject.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titel'),
       'help' => '',
     ),
   );
