@@ -143,6 +143,14 @@
 #header {
   background: $header-background-color;
   padding-top: 0.75%;
+
+  hr {
+    @include output-rhythm(margin, rhythm(0.5) 0);
+    border: none;
+    background-color: $white;
+    height: 2px;
+    background-image: linear-gradient(to right, $header-background-color, $white, $header-background-color);
+  }
 }
 
 .header__logo-wrapper {
@@ -223,16 +231,17 @@
  * Navigation bar.
  */
 #navigation-bar {
-  @include output-rhythm(margin, rhythm(0.5) 0);
 
   .region {
     @include clearfix();
   }
 
-  .form-item,
-  .block {
+  .form-item {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 0;    
+  }
+  .block {
+    @include output-rhythm(margin, rhythm(0.5) 0);
   }
 }
 
@@ -1095,13 +1104,17 @@ tr.selected td {
  */
 #navigation-bar #block-juraport-jura-subject-juraport-jura-subject-overview {
 
-  .jura-subject-overview-link {
+  a.jura-subject-overview-link {
     text-decoration: none;
     line-height: normal;
     @include box-sizing(border-box);
     @include sassy-button("flat", 0, $base-font-size, $header-background-color);
     border: 2px solid $white;
-    padding: 0.625em;
+    padding: 0;
+    // Line-height seems to be the only property that gives us consistent height
+    // between the blocks in the navigation-bar. Different browsers handle the
+    // select-box differently and the problem seems to arise from this.
+    line-height: 2.375em;
     text-align: center;
     &:active, &.active {
       font-weight: normal;
@@ -1142,9 +1155,10 @@ tr.selected td {
   select {
     @include appearance(none);
     @include text-truncate();
-    text-align: center; // Doesn't work in webkit and IE9 and below
+    // text-align: center; // Doesn't work in webkit and IE9 and below so use text-indent instead:
+    text-indent: 10px;
     pointer-events: all;
-    height: 2.5625em; // 41px/16px (Need same height (+ padding and borders) as search-bar).
+    height: 2.625em; // 42px/16px (Padding doesn't work here, so we use a fixed height).
     overflow: hidden;
     background-color: $header-background-color;
     border: 2px solid $white;
@@ -1156,7 +1170,7 @@ tr.selected td {
   }
 
   .form-type-select {
-    height: 2.5625em; // Appearently webkit needs this explicitly.
+    height: 2.625em; // Appearently webkit needs this explicitly.
   }
 
 }
@@ -1169,10 +1183,11 @@ tr.selected td {
   color: $white;
   position: relative;
 
-  input {
+  input.form-text { // The search field
     background-color: $header-background-color;
     border: 2px solid $white;
-    padding: 0.625em;
+    padding: 0;
+    line-height: 2.375em;
     padding-left: 40px;
   }
 
@@ -1182,13 +1197,13 @@ tr.selected td {
     left: 10px;
   }
 
-  .form-submit {
+  input.form-submit { // The search button
     position: absolute;
     width: auto;
     height: 100%;
     top: 0;
     right: 0;
-    padding: 0.625em 1em;
+    padding: 0 1em;
     border: 2px solid $white;
   }
 
