@@ -80,6 +80,15 @@ projects[uuid][version] = "1.0-alpha6"
 projects[elements][subdir] = "contrib"
 projects[elements][version] = "1.4"
 
+projects[features_extra][subdir] = "contrib"
+projects[features_extra][version] = "1.0-beta1"
+
+projects[l10n_update][subdir] = "contrib"
+projects[l10n_update][version] = "2.0"
+
+projects[similarterms][subdir] = "contrib"
+projects[similarterms][version] = "2.3"
+
 ; Base theme
 projects[zen][type] = "theme"
 projects[zen][version] = "5.5"
