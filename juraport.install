@@ -250,13 +250,13 @@ function _juraport_default_language_settings() {
     'language' => 'da',
     'name' => 'Danish',
     'native' => 'Dansk',
-    'direction' => '0',
+    'direction' => LANGUAGE_LTR,
     'enabled' => 1,
-    'plurals' => '0',
+    'plurals' => 0,
     'formula' => '',
     'domain' => '',
     'prefix' => 'da',
-    'weight' => '0',
+    'weight' => 0,
     'javascript' => '',
   );
 }
