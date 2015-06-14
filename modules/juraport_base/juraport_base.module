@@ -79,7 +79,7 @@ function juraport_base_secure_permissions($role) {
       'access content overview',
       'access contextual links',
       'access overlay',
-      'access site in maintenance mode', 
+      'access site in maintenance mode',
       'edit any jura_subject content',
       'edit own juraport_editor profile',
       'edit own jura_subject content',
