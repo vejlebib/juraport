@@ -32,6 +32,13 @@ function juraport_install() {
   // Submit theme settings.
   variable_set('theme_' . $default_theme . '_settings', _juraport_theme_settings());
 
+  // Install our frontend module here so that the block feature settings is
+  // properly reverted. This has to be done after the themes are set, because
+  // the reegions needs to be defined - hence, we cannot use dependencies here.
+  // For more info see:
+  // https://www.drupal.org/node/1901116
+  module_enable(array('juraport_frontend'));
+
   // Set default language
   // Note: It was moved from feature because of the javascript hash-value.
   // See: https://www.drupal.org/node/1850618
