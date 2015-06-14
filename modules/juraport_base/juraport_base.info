@@ -41,7 +41,6 @@ features[variable][] = l10n_update_check_frequency
 features[variable][] = l10n_update_check_mode
 features[variable][] = l10n_update_download_store
 features[variable][] = l10n_update_import_mode
-features[variable][] = language_count
 features[variable][] = pathauto_ignore_words
 features[variable][] = pathauto_node_pattern
 features[variable][] = pathauto_reduce_ascii

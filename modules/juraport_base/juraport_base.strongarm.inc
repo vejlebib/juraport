@@ -132,13 +132,6 @@ function juraport_base_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'language_count';
-  $strongarm->value = 2;
-  $export['language_count'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_ignore_words';
   $strongarm->value = 'a, an, as, at, before, but, by, for, from, is, in, into, like, of, off, on, onto, per, since, than, the, this, that, to, up, via, with, og, i, jeg, det, at, en, den, til, er, som, paa, de, med, han, af, for, ikke, der, var, mig, sig, men, et, har, om, vi, min, havde, ham, hun, nu, over, da, fra, ud, sin, dem, os, op, man, hans, hvor, eller, hvad, skal, selv, her, alle, vil, blev, kunne, ind, naar, vaere, dog, noget, ville, jo, deres, efter, ned, skulle, denne, end, dette, mit, ogsaa, under, have, dig, anden, hende, mine, alt, meget, sit, sine, vor, mod, disse, hvis, din, nogle, hos, blive, mange, ad, bliver, hendes, vaeret, thi, jer';
   $export['pathauto_ignore_words'] = $strongarm;
