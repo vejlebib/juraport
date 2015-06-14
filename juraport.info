@@ -38,5 +38,4 @@ dependencies[] = l10n_update
 
 ; Juraport modules
 dependencies[] = juraport_base
-dependencies[] = juraport_jura_subject
-dependencies[] = juraport_frontend
+dependencies[] = juraport_page
