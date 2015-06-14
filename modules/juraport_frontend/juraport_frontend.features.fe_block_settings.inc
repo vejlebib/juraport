@@ -108,6 +108,70 @@ function juraport_frontend_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['menu-menu-footer-menu'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'menu-footer-menu',
+    'module' => 'menu',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'juraport_theme' => array(
+        'region' => 'footer',
+        'status' => 1,
+        'theme' => 'juraport_theme',
+        'weight' => -12,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+      'zen' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'zen',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
+  $export['node-recent'] = array(
+    'cache' => 1,
+    'custom' => 0,
+    'delta' => 'recent',
+    'module' => 'node',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'juraport_theme' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'juraport_theme',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => 'dashboard_main',
+        'status' => 1,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+      'zen' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'zen',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   $export['search-form'] = array(
     'cache' => -1,
     'custom' => 0,
@@ -127,7 +191,7 @@ function juraport_frontend_default_fe_block_settings() {
         'region' => 'dashboard_sidebar',
         'status' => 1,
         'theme' => 'seven',
-        'weight' => -10,
+        'weight' => 0,
       ),
       'zen' => array(
         'region' => '',
@@ -137,6 +201,134 @@ function juraport_frontend_default_fe_block_settings() {
       ),
     ),
     'title' => '<none>',
+    'visibility' => 0,
+  );
+
+  $export['system-help'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'help',
+    'module' => 'system',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'juraport_theme' => array(
+        'region' => 'help',
+        'status' => 1,
+        'theme' => 'juraport_theme',
+        'weight' => 5,
+      ),
+      'seven' => array(
+        'region' => 'help',
+        'status' => 1,
+        'theme' => 'seven',
+        'weight' => 5,
+      ),
+      'zen' => array(
+        'region' => 'help',
+        'status' => 1,
+        'theme' => 'zen',
+        'weight' => 5,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['system-main'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'main',
+    'module' => 'system',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'juraport_theme' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'juraport_theme',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+      'zen' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'zen',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['user-new'] = array(
+    'cache' => 1,
+    'custom' => 0,
+    'delta' => 'new',
+    'module' => 'user',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'juraport_theme' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'juraport_theme',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => 'dashboard_sidebar',
+        'status' => 1,
+        'theme' => 'seven',
+        'weight' => 1,
+      ),
+      'zen' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'zen',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['user-online'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'online',
+    'module' => 'user',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'juraport_theme' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'juraport_theme',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => 'dashboard_sidebar',
+        'status' => 1,
+        'theme' => 'seven',
+        'weight' => 2,
+      ),
+      'zen' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'zen',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
     'visibility' => 0,
   );
 
