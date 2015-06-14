@@ -42,6 +42,17 @@ function juraport_install() {
   // Set default language
   // Note: It was moved from feature because of the javascript hash-value.
   // See: https://www.drupal.org/node/1850618
+  $default_language = _juraport_default_language_settings();
+  locale_add_language(
+    $default_language['language'],
+    $default_language['name'],
+    $default_language['native'],
+    $default_language['direction'],
+    $default_language['domain'],
+    $default_language['prefix'],
+    $default_language['enabled'],
+    TRUE
+  );
   variable_set('language_default', (object) _juraport_default_language_settings());
 
   // Create a default role for site administrators, with all available permissions assigned.
