@@ -35,7 +35,7 @@ function juraport_theme_preprocess_region(&$variables, $hook) {
   // Remove the no-wrapper template suggestion, so that we can use our own.
   if ($variables['region'] == 'content') {
     $variables['theme_hook_suggestions'] = array_diff(
-      $variables['theme_hook_suggestions'], 
+      $variables['theme_hook_suggestions'],
       array('region__no_wrapper')
     );
   }
@@ -43,7 +43,7 @@ function juraport_theme_preprocess_region(&$variables, $hook) {
 
 /**
  * Implements hook_preprocess_node().
- * 
+ *
  * Override or insert variables into the node templates.
  *
  * @param $variables
@@ -86,6 +86,7 @@ function juraport_theme_preprocess_node_jura_subject(&$variables, $hook) {
  * Places fontawesome icons in front of field collections on jura_subject nodes.
  */
 function juraport_theme_preprocess_field(&$variables, $hook) {
+  // TODO: Refactor this
   if (isset($variables['element']['#field_name']) && isset($variables['label'])) {
     $label = $variables['label'];
     $field_name = $variables['element']['#field_name'];
@@ -96,26 +97,30 @@ function juraport_theme_preprocess_field(&$variables, $hook) {
       $label = '<i class="fa fa-globe fa-2x"></i><span class="field-label-text">' . $label . '</span>';
     }
     else if ($field_name == 'field_jura_subject_lawtext_rules') {
-      $label = '<i class="fa fa-institution fa-2x"></i><span class="field-label-text">' . $label . '</span>';  
+      $label = '<i class="fa fa-institution fa-2x"></i><span class="field-label-text">' . $label . '</span>';
     }
     else if ($field_name == 'field_jura_subject_loan') {
-      $label = '<i class="fa fa-book fa-2x"></i><span class="field-label-text">' . $label . '</span>'; 
+      $label = '<i class="fa fa-book fa-2x"></i><span class="field-label-text">' . $label . '</span>';
     }
     else if ($field_name == 'field_jura_subject_network') {
-      $label = '<i class="fa fa-group fa-2x"></i><span class="field-label-text">' . $label . '</span>';  
-    }    
+      $label = '<i class="fa fa-group fa-2x"></i><span class="field-label-text">' . $label . '</span>';
+    }
     $variables['label'] = $label;
+  }
+  if (isset($variables['element']['#field_name']) && $variables['element']['#field_name'] == 'field_information_box_title') {
+    $output = '<i class="fa fa-info-circle fa-lg"></i>' . $variables['items'][0]['#markup'];
+    $variables['items'][0]['#markup'] = $output;
   }
 }
 
 /**
  * Implements theme_menu_tree().
- * 
+ *
  * Adds the needed classes to the footer-menu.
  *
  * @param $variables
  *   An array of variables to pass to the theme template.
- * @return 
+ * @return
  *   Markup for the footer-menu menu-tree.
  */
 function juraport_theme_menu_tree__menu_footer_menu(&$variables) {
@@ -133,7 +138,7 @@ function juraport_theme_page_alter(&$page) {
   // Remove advanced search for not logged in users.
   if (!empty($page['content']['system_main']['search_form'])) {
     unset($page['content']['system_main']['search_form']);
-  }  
+  }
 }
 
 /**
