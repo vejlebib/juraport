@@ -44,7 +44,7 @@ function juraport_install() {
   _juraport_add_frontpage();
 
   // Add footer-menu pages
-  _juraport_add_footer_menu_pages()
+  _juraport_add_footer_menu_pages();
 
   // Install default taxonomy terms
   _juraport_install_default_taxonomy_terms('jura_category', _juraport_default_jura_category_terms());
@@ -55,10 +55,10 @@ function juraport_install() {
 /**
  * Helper function that adds the frontpage to the system.
  */
-function _juraport_frontend_add_frontpage() {
-  $node = new stdClass(); 
+function _juraport_add_frontpage() {
+  $node = new stdClass();
   // Created by administrator
-  $node->uid = 1; 
+  $node->uid = 1;
 
   $node->title = 'Forside';
   $node->type = 'page';
@@ -78,7 +78,7 @@ function _juraport_frontend_add_frontpage() {
   node_save($node);
 
   $path = array(
-    'source' => 'node/' . $node->nid, 
+    'source' => 'node/' . $node->nid,
     'alias' => 'juraport-frontpage',
   );
   path_save($path);
@@ -110,7 +110,7 @@ function _juraport_add_footer_menu_pages() {
   _juraport_add_footer_menu_page('Love på nettet', 'love-paa-nettet');
 
   // Update the menu router information.
-  menu_rebuild(); 
+  menu_rebuild();
 }
 
 /**
@@ -137,10 +137,10 @@ function _juraport_add_footer_menu_page($title, $path) {
   );
   menu_link_save($item);
   $path = array(
-    'source' => 'node/' . $node->nid, 
+    'source' => 'node/' . $node->nid,
     'alias' => $path,
   );
-  path_save($path); 
+  path_save($path);
 }
 
 /**
@@ -154,7 +154,7 @@ function _juraport_install_default_taxonomy_terms($vocabulary, $default_terms) {
   if ($vocabulary) {
     foreach ($default_terms as $term_name) {
       taxonomy_term_save(_juraport_prepare_term_object($vocabulary->vid, $term_name));
-    } 
+    }
   }
 }
 
@@ -173,7 +173,7 @@ function _juraport_default_jura_category_terms() {
 		'Transport Natur',
 	);
 }
-	
+
 /**
  * Helper function to hold the default Library terms.
  */
@@ -200,7 +200,7 @@ function _juraport_prepare_term_object($vid, $term_name) {
 	$term = new stdClass();
 	$term->vid = $vid;
 	$term->name = $term_name;
-	return $term;	
+	return $term;
 }
 
 /**
@@ -232,7 +232,7 @@ function _juraport_theme_settings() {
     'zen_rebuild_registry' => 0,
     'zen_wireframes' => 0,
     'favicon_mimetype' => 'image/vnd.microsoft.icon',
-  );  
+  );
 }
 
 /**
@@ -268,7 +268,7 @@ function _juraport_add_administrator_role() {
   // Assign user 1 the "administrator" role.
   db_insert('users_roles')
     ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
-    ->execute(); 	
+    ->execute();
 }
 
 /**
@@ -299,8 +299,8 @@ function _juraport_enable_block($block) {
       ))
       ->condition('module', $block['module'])
       ->condition('delta', $block['delta'])
-      ->condition('theme', $block['theme']) 
-      ->execute();     
+      ->condition('theme', $block['theme'])
+      ->execute();
   }
   // Else normal insert:
   else {
@@ -312,8 +312,8 @@ function _juraport_enable_block($block) {
 }
 
 /**
- * - Adds new footer-menu page 'Love på nettet' 
- * - Enables the Jura subject overview and Juraport information box viewer 
+ * - Adds new footer-menu page 'Love på nettet'
+ * - Enables the Jura subject overview and Juraport information box viewer
  * blocks in the system.
  * - Adds the field_juraport_information_box field to the page node type.
  * - Updates every jura_subject node and corresponding URL-alias to danish
