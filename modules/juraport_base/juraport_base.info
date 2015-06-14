@@ -20,7 +20,6 @@ features[features_api][] = api:2
 features[filter][] = filtered_html
 features[filter][] = full_html
 features[filter][] = plain_text
-features[language][] = da
 features[metatag][] = global
 features[metatag][] = global:403
 features[metatag][] = global:404

@@ -13,7 +13,7 @@ function juraport_base_date_formats() {
   return array(
     array(
       'type' => 'short',
-      'format' => 'j. M Y - H:i',
+      'format' => 'j. M Y - G:i',
       'locales' => array(''),
     ),
     array(
