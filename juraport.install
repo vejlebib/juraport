@@ -42,6 +42,7 @@ function juraport_install() {
   // Set default language
   // Note: It was moved from feature because of the javascript hash-value.
   // See: https://www.drupal.org/node/1850618
+  // See: http://drupal.stackexchange.com/questions/48872/how-to-set-the-default-language-in-code
   locale_add_language('da');
   $languages = language_list();
   variable_set('language_default', $languages['da']);
