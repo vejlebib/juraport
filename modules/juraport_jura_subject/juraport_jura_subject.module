@@ -91,7 +91,7 @@ function juraport_jura_subject_preprocess_node(&$variables) {
 					'datetime' => format_date($node->changed, 'custom', 'c'),
 				),
 			);
-			
+
 			$variables['display_maintained_by'] = TRUE;
 		}
 	}
@@ -116,7 +116,7 @@ function juraport_jura_subject_block_info() {
 	// own module, as it not only concerns jura_subject node types, but also the
 	// basic_page node type.
 	// TODO: Make new module juraport_info_box which isolate the information box
-	// functionality. This new module should depend on juraport_jura_subject 
+	// functionality. This new module should depend on juraport_jura_subject
 	// (this module) and juraport_base (the basic page needs to be moved from
 	// the installation profile to juraport_base as a feature in this case).
 	$blocks['juraport_info_box_viewer'] = array(
@@ -184,10 +184,13 @@ function juraport_jura_subject_jump_menu_form($form, &$form_state) {
 		->propertyCondition('status', NODE_PUBLISHED)
 		->propertyOrderBy('title');
 	$result = $query->execute();
-	$nodes = node_load_multiple(array_keys($result['node']));
-	foreach ($nodes as $node) {
-		$url = url('node/' . $node->nid);
-		$options[$url] = $node->title;
+	$nodes = array();
+	if (isset($result['node'])) {
+		$nodes = node_load_multiple(array_keys($result['node']));
+		foreach ($nodes as $node) {
+			$url = url('node/' . $node->nid);
+			$options[$url] = $node->title;
+		}
 	}
 	$form['jura_subject_jump_menu'] = ctools_jump_menu(array(), $form_state, $options, array(
 		'hide' => TRUE,
