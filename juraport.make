@@ -89,8 +89,8 @@ projects[l10n_update][version] = "2.0"
 projects[similarterms][subdir] = "contrib"
 projects[similarterms][version] = "2.3"
 
-projects[views_bulk_opertations][subdir] = "contrib"
-projects[views_bulk_opertations][version] = "3.2"
+projects[views_bulk_operations][subdir] = "contrib"
+projects[views_bulk_operations][version] = "3.2"
 
 projects[admin_views][subdir] = "contrib"
 projects[admin_views][version] = "1.4"
