@@ -108,8 +108,7 @@ function juraport_theme_preprocess_field(&$variables, $hook) {
     $variables['label'] = $label;
   }
   if (isset($variables['element']['#field_name']) && $variables['element']['#field_name'] == 'field_information_box_title') {
-    $output = '<i class="fa fa-info-circle fa-lg"></i>' . $variables['items'][0]['#markup'];
-    $variables['items'][0]['#markup'] = $output;
+    $variables['items'][0]['#prefix'] = '<i class="fa fa-info-circle fa-lg"></i>';
   }
 }
 
