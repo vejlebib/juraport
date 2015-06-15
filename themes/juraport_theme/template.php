@@ -86,29 +86,35 @@ function juraport_theme_preprocess_node_jura_subject(&$variables, $hook) {
  * Places fontawesome icons in front of field collections on jura_subject nodes.
  */
 function juraport_theme_preprocess_field(&$variables, $hook) {
-  // TODO: Refactor this
-  if (isset($variables['element']['#field_name']) && isset($variables['label'])) {
-    $label = $variables['label'];
+  if (isset($variables['element']['#field_name'])) {
     $field_name = $variables['element']['#field_name'];
-    if ($field_name == 'field_jura_subject_laws_rules') {
-      $label = '<i class="fa fa-key fa-2x"></i><span class="field-label-text">' . $label . '</span>';
+
+    // Place an info-icon at the information-box title
+    if ($field_name == 'field_information_box_title') {
+      $variables['items'][0]['#prefix'] = '<i class="fa fa-info-circle fa-lg"></i>';
     }
-    else if ($field_name == 'field_jura_subject_online') {
-      $label = '<i class="fa fa-globe fa-2x"></i><span class="field-label-text">' . $label . '</span>';
+
+    // Placement of jura_subject field icons
+    if (isset($variables['label'])) {
+      $prefix = '';
+
+      if ($field_name == 'field_jura_subject_laws_rules') {
+        $prefix = '<i class="fa fa-key fa-2x"></i>';
+      }
+      else if ($field_name == 'field_jura_subject_online') {
+        $prefix = '<i class="fa fa-globe fa-2x"></i>';
+      }
+      else if ($field_name == 'field_jura_subject_lawtext_rules') {
+        $prefix = '<i class="fa fa-institution fa-2x"></i>';
+      }
+      else if ($field_name == 'field_jura_subject_loan') {
+        $prefix = '<i class="fa fa-book fa-2x"></i>';
+      }
+      else if ($field_name == 'field_jura_subject_network') {
+        $prefix = '<i class="fa fa-group fa-2x"></i>';
+      }
+      $variables['label'] = $prefix . '<span class="field-label-text">' . $variables['label'] . '</span>';
     }
-    else if ($field_name == 'field_jura_subject_lawtext_rules') {
-      $label = '<i class="fa fa-institution fa-2x"></i><span class="field-label-text">' . $label . '</span>';
-    }
-    else if ($field_name == 'field_jura_subject_loan') {
-      $label = '<i class="fa fa-book fa-2x"></i><span class="field-label-text">' . $label . '</span>';
-    }
-    else if ($field_name == 'field_jura_subject_network') {
-      $label = '<i class="fa fa-group fa-2x"></i><span class="field-label-text">' . $label . '</span>';
-    }
-    $variables['label'] = $label;
-  }
-  if (isset($variables['element']['#field_name']) && $variables['element']['#field_name'] == 'field_information_box_title') {
-    $variables['items'][0]['#prefix'] = '<i class="fa fa-info-circle fa-lg"></i>';
   }
 }
 
