@@ -163,19 +163,6 @@ function juraport_jura_subject_jump_menu_form($form, &$form_state) {
 	ctools_include('jump-menu');
 	$options = array();
 
-	/*// Get all jura catogories saved in the system
-	$vocabulary = taxonomy_vocabulary_machine_name_load('jura_category');
-	$categories = taxonomy_get_tree($vocabulary->vid);
-	foreach ($categories as $category) {
-		$url = url('taxonomy/term/' . $category->tid);
-		$options[$url] = $category->name;
-	}
-	$form['jura_category_jump_menu'] = ctools_jump_menu(array(), $form_state, $options, array(
-		'hide' => TRUE,
-		'inline' => FALSE,
-		'choose' => t('- Choose a category -'),
-	));*/
-
 	// Get all jura subjects in the system using EntityFieldQuery
 	$query = new EntityFieldQuery();
 	$options = array();
