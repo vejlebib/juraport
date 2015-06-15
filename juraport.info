@@ -35,6 +35,8 @@ dependencies[] = backup_migrate
 dependencies[] = uuid
 dependencies[] = elements
 dependencies[] = l10n_update
+dependencies[] = views_bulk_operations
+dependencies[] = admin_views
 
 ; Juraport modules
 dependencies[] = juraport_base
