@@ -165,7 +165,7 @@ function juraport_jura_subject_jump_menu_form($form, &$form_state) {
 
 	// Get all jura subjects in the system using EntityFieldQuery
 	$query = new EntityFieldQuery();
-	$options = array();
+	$select = array();
 	$query->entityCondition('entity_type', 'node')
 		->entityCondition('bundle', 'jura_subject')
 		->propertyCondition('status', NODE_PUBLISHED)
@@ -176,14 +176,29 @@ function juraport_jura_subject_jump_menu_form($form, &$form_state) {
 		$nodes = node_load_multiple(array_keys($result['node']));
 		foreach ($nodes as $node) {
 			$url = url('node/' . $node->nid);
-			$options[$url] = $node->title;
+			$select[$url] = $node->title;
 		}
 	}
-	$form['jura_subject_jump_menu'] = ctools_jump_menu(array(), $form_state, $options, array(
+
+	// Build options array for the jump-menu
+	$options = array(
 		'hide' => TRUE,
 		'inline' => FALSE,
 		'choose' => t('- Choose a subject -'),
-	));
+	);
+	// If this is a jura_subject page: set it as default value
+	if ($node = menu_get_object()) {
+		$options['default_value'] = $node->type == 'jura_subject' ? url('node/'. $node->nid) : '';
+	}
+
+	// Attach jump-menu to form
+	$form['jura_subject_jump_menu'] = ctools_jump_menu(
+		array(),
+		$form_state,
+		$select,
+		$options
+	);
+
 	return $form;
 }
 
