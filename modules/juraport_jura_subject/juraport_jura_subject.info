@@ -84,4 +84,4 @@ features[views_view][] = jura_subject_overview
 features[views_view][] = juraport_editor_list
 features_exclude[dependencies][views] = views
 files[] = juraport_jura_subject_plugin_style_column_overview.inc
-mtime = 1434242829
+mtime = 1434321071
