@@ -345,7 +345,7 @@ function juraport_frontend_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'juraport_theme',
-        'weight' => -12,
+        'weight' => -13,
       ),
       'seven' => array(
         'region' => '',
@@ -394,6 +394,46 @@ function juraport_frontend_default_fe_block_settings() {
     ),
     'title' => '',
     'visibility' => 0,
+  );
+
+  $export['views-jura_subject_overview-block_3'] = array(
+    'cache' => 8,
+    'custom' => 0,
+    'delta' => 'jura_subject_overview-block_3',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '<front>
+domme-paa-nettet
+jura-links
+kontakt
+love-paa-nettet
+om-juraport
+spoerg-om-jura
+emneoversigt
+search/*',
+    'roles' => array(),
+    'themes' => array(
+      'juraport_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'juraport_theme',
+        'weight' => -12,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+      'zen' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'zen',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 1,
   );
 
   return $export;
