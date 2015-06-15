@@ -9,7 +9,7 @@
  */
 
 /**
- * Wireframes.  
+ * Wireframes.
  */
 %wireframe {
   outline: 1px solid #ccc;
@@ -71,7 +71,7 @@
 /* element-invisible as defined by http://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
 .element-invisible,
 %element-invisible {
-  @include element-invisible; 
+  @include element-invisible;
 }
 
 /* Turns off the element-invisible effect. */
@@ -192,7 +192,7 @@
   .header__site-name {
     @include adjust-font-size-to($title-fontsize-desktop);
     line-height: 1em;
-  } 
+  }
 }
 
 /* The link around the name of the website. */
@@ -224,7 +224,7 @@
 /* Wrapper for any blocks placed in the header region. */
 .header__region {
   /* Clear the logo. */
-  clear: both;  
+  clear: both;
 }
 
 /**
@@ -238,7 +238,7 @@
 
   .form-item {
     margin-top: 0;
-    margin-bottom: 0;    
+    margin-bottom: 0;
   }
   .block {
     @include output-rhythm(margin, rhythm(0.5) 0);
@@ -441,7 +441,7 @@ ul.footer-menu {
 /* Basic positioning styles shared by primary and secondary tabs. */
 %tabs {
   @include clearfix;
-  @include background-image(linear-gradient(bottom, $tabs-border 1px, transparent 1px));  
+  @include background-image(linear-gradient(bottom, $tabs-border 1px, transparent 1px));
   /* IE 9 and earlier don't understand gradients. */
   list-style: none;
   border-bottom: 1px solid $tabs-border \0/ie;
@@ -604,7 +604,7 @@ span.field-label {
   @if support-legacy-browser(ie, "7") {
     *background-image: image-url("help.png");
   }
-  background-position: 0 50%; 
+  background-position: 0 50%;
   background-repeat: no-repeat;
   padding: 1px 0 1px 20px;
 }
@@ -1175,7 +1175,7 @@ tr.selected td {
 
 }
 
-/** 
+/**
  * Search block form in navigation bar.
  */
 #navigation-bar #search-block-form {
@@ -1229,6 +1229,15 @@ tr.selected td {
     font-size: $h3-font-size;
     color: $header-text-color;
     border-bottom: 2px solid $header-background-color;
+    position: relative;
+    padding-left: 25px;
+
+    .fa {
+      position: absolute;
+      color: $header-background-color;
+      left: 0;
+      bottom: 4px;
+    }
   }
 
   .field-name-field-information-box-more a {
