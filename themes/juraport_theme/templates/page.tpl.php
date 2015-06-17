@@ -17,7 +17,7 @@
     <?php if ($logo): ?>
       <div class="header__logo-wrapper" id="logo-wrapper">
         <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="header__logo" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" class="header__logo-image" /></a>
-      </div>      
+      </div>
     <?php endif; ?>
 
     <?php if ($site_name || $site_slogan): ?>
@@ -27,12 +27,15 @@
             <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="header__site-link" rel="home"><span><?php print $site_name; ?></span></a>
           </h1>
         <?php endif; ?>
+        <button class="navigation-bar-toggle">
+          <span><?php t('Toggle menu'); ?></span>
+        </button>
       </div>
     <?php endif; ?>
 
     <?php print render($page['header']); ?>
 
-    <?php 
+    <?php
       // Render the navgation bar to see if there's anything in it.
       $navigation_bar = render($page['navigation']);
     ?>
