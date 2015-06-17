@@ -117,3 +117,15 @@ function juraport_base_preprocess_html(&$variables) {
     drupal_add_html_head($meta_tag, 'search_count_meta_tag');
   }
 }
+
+/**
+ * Implements hook_page_build().
+ */
+function juraport_base_page_build(&$page) {
+  $html = '<img alt="dcsimg" id="dcsimg" width="1" height="1" src="//statse.webtrendslive.com/dcs2221gkzn196tf2ood4s62q_3z8l/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.4.1&amp;dcssip=www.juraport.dk"/>';
+  $page['page_bottom']['webtrends'] = array(
+    '#prefix' => '<noscript>',
+    '#suffix' => '</noscript>',
+    '#markup' => $html,
+  );
+}

@@ -4,6 +4,7 @@ core = 7.x
 package = Juraport
 version = 7.x-1.0
 project = juraport_base
+#scripts[] = js/webtrends.load.js
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = filter
