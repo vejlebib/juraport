@@ -98,7 +98,7 @@ projects[admin_views][version] = "1.4"
 projects[linkchecker][subdir] = "contrib"
 projects[linkchecker][version] = "1.2"
 # Allows linkchecker to search embedded field collections for bad links.
-projects[linkchecker][patch][] = https://www.drupal.org/files/issues/field-collection-compatibility-1888102-8.patch
+projects[linkchecker][patch][0] = https://www.drupal.org/files/issues/field-collection-compatibility-1888102-8.patch
 
 ; Base theme
 projects[zen][type] = "theme"
