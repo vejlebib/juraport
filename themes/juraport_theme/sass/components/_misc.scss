@@ -228,9 +228,9 @@
 }
 
 /**
- * Navigation bar.
+ * Navigation
  */
-#navigation-bar {
+.navigation {
 
   .region {
     @include clearfix();
@@ -242,6 +242,100 @@
   }
   .block {
     @include output-rhythm(margin, rhythm(0.5) 0);
+  }
+
+  .navigation-bar-toggle-wrapper {
+    @include clearfix();
+  }
+
+
+}
+
+.navigation-bar-toggle {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  margin: 0;
+  padding: 0;
+  width: 54px;
+  height: 48px;
+  font-size: 0;
+  text-indent: -9999px;
+  border: none;
+  curser: pointer;
+  @include appearance(none);
+  @include box-shadow(none);
+  @include border-radius(none);
+  @include transition(background 0.3s);
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: $header-background-color;
+  }
+
+  span {
+    display: block;
+    position: absolute;
+    top: 22px;
+    left: 9px;
+    right: 9px;
+    height: 3px;
+    background: $white;
+    @include transition(background 0 0.3s);
+  }
+
+  span::before,
+  span::after {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: $white;
+    content: "";
+    -webkit-transition-duration: 0.3s, 0.3s;
+    transition-duration: 0.3s, 0.3s;
+    -webkit-transition-delay: 0.3s, 0;
+    transition-delay: 0.3s, 0;
+  }
+
+  span::before {
+    top: -13px;
+    -webkit-transition-property: top, -webkit-transform;
+    transition-property: top, transform;
+  }
+
+  span::after {
+    bottom: -13px;
+    -webkit-transition-property: bottom, -webkit-transform;
+    transition-property: bottom, transform;
+  }
+
+  &.active {
+    span {
+      background: none;
+    }
+    span::before {
+      top: 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    span::after {
+      bottom: 0;
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+    span::before,
+    span::after {
+      -webkit-transition-delay: 0, 0.3s;
+      transition-delay: 0, 0.3s;
+    }
   }
 }
 
@@ -1155,6 +1249,7 @@ tr.selected td {
   select {
     @include appearance(none);
     @include text-truncate();
+    cursor: pointer;
     // text-align: center; // Doesn't work in webkit and IE9 and below so use text-indent instead:
     text-indent: 10px;
     pointer-events: all;
