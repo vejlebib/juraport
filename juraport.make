@@ -95,6 +95,11 @@ projects[views_bulk_operations][version] = "3.2"
 projects[admin_views][subdir] = "contrib"
 projects[admin_views][version] = "1.4"
 
+projects[linkchecker][subdir] = "contrib"
+projects[linkchecker][version] = "1.2"
+# Allows linkchecker to search embedded field collections for bad links.
+projects[linkchecker][patch][] = https://www.drupal.org/files/issues/field-collection-compatibility-1888102-8.patch
+
 ; Base theme
 projects[zen][type] = "theme"
 projects[zen][version] = "5.5"
