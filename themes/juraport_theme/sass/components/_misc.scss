@@ -1173,6 +1173,14 @@ tr.selected td {
     height: 2.625em; // Appearently webkit needs this explicitly.
   }
 
+  .ctools-jump-menu-button {
+    // The ctools jump menu sometimes bugs out and shows the button. when it
+    // shouldn't.
+    // This is an easy fix, but we should propably make our own implementation
+    // using Form API and AJAX (or Javasript) in the future.
+    display: none;
+  }
+
 }
 
 /**
