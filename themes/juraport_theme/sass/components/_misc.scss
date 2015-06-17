@@ -1238,7 +1238,8 @@ tr.selected td {
     color: $header-text-color;
     border-bottom: 2px solid $header-background-color;
     position: relative;
-    padding-left: 30px;
+    padding-left: 27px;
+    padding-bottom: 1px;
 
     .fa {
       position: absolute;
