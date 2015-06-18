@@ -2,7 +2,6 @@ name = Juraport user
 description = Defines the Jura editor user profile and related settings
 core = 7.x
 package = Juraport
-version = 7.x-0.2.0
 dependencies[] = entity
 dependencies[] = features
 dependencies[] = list

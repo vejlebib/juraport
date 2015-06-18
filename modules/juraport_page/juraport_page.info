@@ -2,7 +2,6 @@ name = Juraport page
 description = Defines the basic page content type
 core = 7.x
 package = Juraport
-version = 7.x-1.0
 project = juraport_page
 dependencies[] = ctools
 dependencies[] = features
