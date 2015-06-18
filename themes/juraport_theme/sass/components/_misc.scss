@@ -251,6 +251,9 @@
 
 }
 
+/** 
+ * Navigation-bar toggle (burger-menu)
+ */
 .navigation-bar-toggle {
   display: block;
   position: absolute;
@@ -336,6 +339,20 @@
       -webkit-transition-delay: 0, 0.3s;
       transition-delay: 0, 0.3s;
     }
+  }
+}
+
+#navigation-bar {
+  display: none;
+}
+
+@media all and (min-width: 480px) {
+  #navigation-bar {
+    display: block;
+  }
+
+  .navigation-bar-toggle {
+    display: none;
   }
 }
 
