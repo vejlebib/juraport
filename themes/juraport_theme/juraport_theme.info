@@ -13,7 +13,7 @@ stylesheets[all][] = system.theme.css
 stylesheets[all][] = css/styles.css
 
 ; Add our own script (TODO).
-;scripts[] = js/script.js
+scripts[] = js/juraport_theme.js
 
 regions[header]         = Header
 regions[navigation]     = Navigation bar
