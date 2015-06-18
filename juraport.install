@@ -367,3 +367,21 @@ function juraport_update_7001(&$sandbox) {
   module_disable(array('taxonomy_permissions'), FALSE);
   drupal_uninstall_modules(array('taxonomy_permissions'));
 }
+
+/** 
+ * -Enables the following modules:
+ *   - Similarterms
+ *   - Linkchecker
+ *   - l10n_update
+ *   - View bulk operations
+ *   - Administrative Views
+ */
+function juraport_update_7002(&$sandbox) {
+  module_enable(array(
+    'similarterms', 
+    'linkchecker', 
+    'l10n_update', 
+    'views_bulk_operations',
+    'admin_view',
+  ));
+}
