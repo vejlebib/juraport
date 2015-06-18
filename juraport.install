@@ -383,6 +383,7 @@ function juraport_update_7002(&$sandbox) {
     'l10n_update', 
     'views_bulk_operations',
     'admin_view',
+    'fe_block',
     'juraport_frontend',
     'juraport_page',
   ));
