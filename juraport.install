@@ -375,6 +375,9 @@ function juraport_update_7001(&$sandbox) {
  *   - l10n_update
  *   - View bulk operations
  *   - Administrative Views
+ *   - Features Extra block
+ *   - Juraport frontend
+ *   - Juraport page
  */
 function juraport_update_7002(&$sandbox) {
   module_enable(array(
@@ -382,7 +385,7 @@ function juraport_update_7002(&$sandbox) {
     'linkchecker', 
     'l10n_update', 
     'views_bulk_operations',
-    'admin_view',
+    'admin_views',
     'fe_block',
     'juraport_frontend',
     'juraport_page',
