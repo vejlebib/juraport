@@ -1224,9 +1224,6 @@ tr.selected td {
     @include sassy-button("flat", 0, $base-font-size, $header-background-color);
     border: 2px solid $white;
     padding: 0;
-    // Line-height seems to be the only property that gives us consistent height
-    // between the blocks in the navigation-bar. Different browsers handle the
-    // select-box differently and the problem seems to arise from this.
     line-height: 2.375em;
     text-align: center;
     &:active, &.active {
