@@ -119,7 +119,7 @@ function juraport_base_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'l10n_update_download_store';
-  $strongarm->value = 'sites/all/translations';
+  $strongarm->value = 'sites/default/files/translations';
   $export['l10n_update_download_store'] = $strongarm;
 
   $strongarm = new stdClass();
