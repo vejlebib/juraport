@@ -227,30 +227,34 @@
   clear: both;
 }
 
+.region {
+  @include clearfix();
+}
+
 /**
  * Navigation
  */
 .navigation {
 
-  @include output-rhythm(margin, rhythm(0.5) 0);
+  @include output-rhythm(margin, rhythm(1) 0 rhythm(0.5) 0);
 
-  .region {
-    @include clearfix();
-  }
-
-  .form-item {
+  .form-item,
+  .block {
     margin-top: 0;
     margin-bottom: 0;
   }
-  .block {
+
+}
+
+@media all and (max-width: 959px) {
+  .navigation,
+  .navigation .block {
     @include output-rhythm(margin, rhythm(0.5) 0);
   }
+}
 
-  .navigation-bar-toggle-wrapper {
-    @include clearfix();
-  }
-
-
+.navigation-bar-toggle-wrapper {
+  @include clearfix();
 }
 
 /** 
