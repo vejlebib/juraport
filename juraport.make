@@ -5,6 +5,10 @@ api = 2
 libraries[profiler][download][type] = "get"
 libraries[profiler][download][url] = "http://ftp.drupal.org/files/projects/profiler-7.x-2.0-beta2.tar.gz"
 
+libraries[ckeditor][download][type] = "get"
+libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.4.7/ckeditor_4.4.7_full.zip
+libraries[ckeditor][directory_name] = "ckeditor"
+
 ; Contrib
 projects[admin_menu][subdir] = "contrib"
 projects[admin_menu][version] = "3.0-rc4"
@@ -99,6 +103,13 @@ projects[linkchecker][subdir] = "contrib"
 projects[linkchecker][version] = "1.2"
 ; Allows linkchecker to search embedded field collections for bad links.
 projects[linkchecker][patch][0] = https://www.drupal.org/files/issues/field-collection-compatibility-1888102-8.patch
+
+; This revision support the CKEditor 4.x, and can be used until a new version is tagged.
+projects[wysiwyg][type] = "module"
+projects[wysiwyg][subdir] = "contrib"
+projects[wysiwyg][download][type] = "git"
+projects[wysiwyg][download][url] = "http://git.drupal.org/project/wysiwyg.git"
+projects[wysiwyg][download][revision] = "7981731f4f3db2f932419499d2ec13a073e9b88f"
 
 ; Base theme
 projects[zen][type] = "theme"

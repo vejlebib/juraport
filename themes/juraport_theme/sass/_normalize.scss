@@ -89,7 +89,7 @@ html {
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
   // Show a background image that can be used to debug your alignments.
-  // @include debug-vertical-alignment();  
+  // @include debug-vertical-alignment();
 }
 
 /* Remove default margin. */
@@ -144,10 +144,10 @@ a:hover {
 @if support-legacy-browser(ie, "10") {
   /**
    * Remove the gray background color from active links in IE 10.
-   */  
+   */
   a {
     background-color: transparent;
-  }  
+  }
 }
 
 /**
@@ -474,7 +474,7 @@ button {
  * Consistent styling of select boxes
  */
 select {
-  
+
 }
 
 /**
