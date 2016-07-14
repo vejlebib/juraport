@@ -83,11 +83,14 @@ function juraport_base_secure_permissions($role) {
       'edit any jura_subject content',
       'edit own juraport_editor profile',
       'edit own jura_subject content',
+      'edit any page content',
+      'edit own page content',
       'search content',
       'use advanced search',
       'view own unpublished content',
       'view revisions',
       'view the administration theme',
+      'use text format filtered_html',
     ),
   );
   if (isset($permissions[$role])) {
