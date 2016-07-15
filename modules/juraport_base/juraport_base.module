@@ -47,8 +47,6 @@ function juraport_base_date_format_types() {
  */
 function juraport_base_secure_permissions_roles() {
   return array(
-    'anonymous user',
-    'authenticated user',
     'juraport editor',
   );
 }
@@ -85,6 +83,10 @@ function juraport_base_secure_permissions($role) {
       'edit own jura_subject content',
       'edit any page content',
       'edit own page content',
+      'create files',
+      'administer files',
+      'view files',
+      'edit any image files',
       'search content',
       'use advanced search',
       'view own unpublished content',

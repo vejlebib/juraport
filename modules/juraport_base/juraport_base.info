@@ -3,7 +3,9 @@ description = Defines base settings for the Juraport site
 core = 7.x
 package = Juraport
 project = juraport_base
+
 #scripts[] = js/webtrends.load.js
+
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = filter
@@ -16,11 +18,19 @@ dependencies[] = pathauto
 dependencies[] = secure_permissions
 dependencies[] = strongarm
 dependencies[] = transliteration
+dependencies[] = linkit
+dependencies[] = media_wysiwyg
+dependencies[] = wysiwyg
+
 features[ctools][] = strongarm:strongarm:1
+features[ctools][] = linkit:linkit_profiles:1
 features[features_api][] = api:2
 features[filter][] = filtered_html
 features[filter][] = full_html
 features[filter][] = plain_text
+features[wysiwyg][] = filtered_html
+features[wysiwyg][] = full_html
+features[linkit_profiles][] = juraport_linkit
 features[metatag][] = global
 features[metatag][] = global:403
 features[metatag][] = global:404
@@ -84,4 +94,3 @@ features[variable][] = user_cancel_method
 features[variable][] = user_pictures
 features[variable][] = user_register
 features[variable][] = user_signatures
-mtime = 1434574874
