@@ -43,8 +43,8 @@ function juraport_install() {
   // Create a default role for site administrators, with all available permissions assigned.
   _juraport_add_administrator_role();
 
-  // Add the Juraport frontpage to the system
-  _juraport_add_frontpage();
+  // Set the jura subject overview as frontpage.
+  variable_set('site_frontpage', 'emneoversigt');
 
   // Add footer-menu pages
   _juraport_add_footer_menu_pages();
@@ -66,6 +66,8 @@ function juraport_install() {
 
 /**
  * Helper function that adds the frontpage to the system.
+ * NOTE: Not used anymore as of update 7003 which adds the jura subject
+ * overview as frontpage.
  */
 function _juraport_add_frontpage() {
   $node = new stdClass();
@@ -368,7 +370,7 @@ function juraport_update_7001(&$sandbox) {
   drupal_uninstall_modules(array('taxonomy_permissions'));
 }
 
-/** 
+/**
  * -Enables the following modules:
  *   - Similarterms
  *   - Linkchecker
@@ -381,13 +383,40 @@ function juraport_update_7001(&$sandbox) {
  */
 function juraport_update_7002(&$sandbox) {
   module_enable(array(
-    'similarterms', 
-    'linkchecker', 
-    'l10n_update', 
+    'similarterms',
+    'linkchecker',
+    'l10n_update',
     'views_bulk_operations',
     'admin_views',
     'fe_block',
     'juraport_frontend',
     'juraport_page',
   ));
+}
+
+/**
+ * - Switch the frontpage to the jura subject overview.
+ */
+function juraport_update_7003(&$sandbox) {
+  // Get the frontpage node (without depending on a specific ID).
+  $frontpage_node_path = drupal_get_normal_path('juraport-frontpage');
+  $frontpage_node_path = explode('/', $frontpage_node_path);
+
+  // If found remove it first.
+  if (isset($frontpage_node_path[1])) {
+    // Unpublish and set new frontpage.
+    $node = node_load($frontpage_node_path[1]);
+    $node->status = 0;
+    node_save($node);
+
+    // Remove the path alias
+    $criteria = array('alias' => 'juraport-frontpage');
+    path_delete($criteria);
+
+  }
+
+  // Set the jura_subject overview as the new frontpage. We could add the
+  // above alias to this also, but the Global redirect module should handle
+  // it nicely without.
+  variable_set('site_frontpage', 'emneoversigt');
 }
