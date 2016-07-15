@@ -111,6 +111,9 @@ projects[wysiwyg][download][type] = "git"
 projects[wysiwyg][download][url] = "http://git.drupal.org/project/wysiwyg.git"
 projects[wysiwyg][download][revision] = "7981731f4f3db2f932419499d2ec13a073e9b88f"
 
+projects[linkit][subdir] = "contrib"
+projects[linkit][version] = "3.5"
+
 ; Base theme
 projects[zen][type] = "theme"
 projects[zen][version] = "5.5"
