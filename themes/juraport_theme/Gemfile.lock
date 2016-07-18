@@ -42,3 +42,6 @@ DEPENDENCIES
   sass (~> 3.3)
   sassy-buttons (~> 0.2.6)
   zen-grids (>= 2.0.0.beta.3)
+
+BUNDLED WITH
+   1.10.3
