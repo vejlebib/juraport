@@ -111,6 +111,9 @@ projects[wysiwyg][download][type] = "git"
 projects[wysiwyg][download][url] = "http://git.drupal.org/project/wysiwyg.git"
 projects[wysiwyg][download][revision] = "7981731f4f3db2f932419499d2ec13a073e9b88f"
 
+projects[file_entity][subdir] = "contrib"
+projects[file_entity][version] = "2.0-beta3"
+
 projects[media][subdir] = "contrib"
 projects[media][version] = "2.0-beta2"
 
