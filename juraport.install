@@ -396,6 +396,7 @@ function juraport_update_7002(&$sandbox) {
 
 /**
  * - Switch the frontpage to the jura subject overview.
+ * - Enable new default modules.
  */
 function juraport_update_7003(&$sandbox) {
   // Get the frontpage node (without depending on a specific ID).
@@ -419,4 +420,12 @@ function juraport_update_7003(&$sandbox) {
   // above alias to this also, but the Global redirect module should handle
   // it nicely without.
   variable_set('site_frontpage', 'emneoversigt');
+
+  // Enable some modules.
+  module_enable(array(
+    'file_entity',
+    'media',
+    'media_wysiwyg',
+    'linkit',
+  ), TRUE);
 }
