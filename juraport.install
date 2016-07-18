@@ -427,5 +427,6 @@ function juraport_update_7003(&$sandbox) {
     'media',
     'media_wysiwyg',
     'linkit',
+    'globalredirect',
   ), TRUE);
 }
