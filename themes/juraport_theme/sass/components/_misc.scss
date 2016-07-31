@@ -1431,3 +1431,63 @@ tr.selected td {
   }
 
 }
+.juraport-jura-subject-view-column-overview {
+  // Negate some of the vertical rhythm applied on the top-level blocks.
+  // This is a bit hackish, but for now the easiest way.
+  margin-top: -0.5em;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .jura-subject-overview-column {
+    @include box-sizing(border-box);
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .jura-subject-overview-column-first {
+    padding-left: 0;
+  }
+
+  .jura-subject-overview-column-last {
+    padding-right: 0;
+  }
+
+  li {
+    // TODO: Use line height instead of padding/margin to create spacing.
+    //@include adjust-font-size-to($h4-font-size);
+    //@include output-rhythm(padding, rhythm(0.2) 0);
+    line-height: 2em;
+    border-bottom: 1px dotted $header-background-color;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+      -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+      -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+      -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+      transition: font-size 0.3s ease, background-color 0.3s ease;
+    }
+
+    a:hover {
+      @include adjust-font-size-to($h2-font-size);
+      background: #f6f6f6;
+    }
+  }
+
+  h2 {
+    @include output-rhythm(margin, rhythm(0.25) 0);
+  }
+}

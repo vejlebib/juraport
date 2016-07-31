@@ -33,6 +33,12 @@ function template_preprocess_juraport_jura_subject_view_column_overview(&$variab
 			$extra--;
 		}
 		$column_class = 'jura-subject-overview-column-' . $column_number;
+		if ($column_number == 1) {
+			$column_class .= ' jura-subject-overview-column-first';
+		}
+		elseif ($column_number == $column_count) {
+			$column_class .= ' jura-subject-overview-column-last';
+		}
 		$columns[$column_class]['rows'] = array_slice($rows, $offset, $current_column_row_count);
 		$column_number++;
 		$offset += $current_column_row_count;
