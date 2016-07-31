@@ -235,8 +235,7 @@
  * Navigation
  */
 .navigation {
-
-  @include output-rhythm(margin, rhythm(1) 0 rhythm(0.5) 0);
+  margin: 1.5em 0 1.375em 0;
 
   .form-item,
   .block {
@@ -257,7 +256,7 @@
   @include clearfix();
 }
 
-/** 
+/**
  * Navigation-bar toggle (burger-menu)
  */
 .navigation-bar-toggle {
@@ -1292,9 +1291,9 @@ tr.selected td {
     line-height: normal;
     @include box-sizing(border-box);
     @include sassy-button("flat", 0, $base-font-size, $header-background-color);
-    border: 2px solid $white;
+    border: 1px solid $white;
     padding: 0;
-    line-height: 2.375em;
+    line-height: 3em; // Before 2.375em.
     text-align: center;
     &:active, &.active {
       font-weight: normal;
@@ -1310,6 +1309,7 @@ tr.selected td {
 
   .form-type-select {
     position: relative;
+    height: 3.125em; // Appearently webkit needs this here also.
 
     /**
      * This is an easy fix for allowing click events being passed through the
@@ -1323,8 +1323,8 @@ tr.selected td {
     /* Arrows in select box */
     &:after {
       position: absolute;
-      right: 0.5em;
-      top: 0.5em;
+      right: 0.8em;
+      top: 0.8em;
       font-family: $base-icon-library-font;
       color: $white;
       content: $fa-var-chevron-down;
@@ -1337,21 +1337,17 @@ tr.selected td {
     @include text-truncate();
     cursor: pointer;
     // text-align: center; // Doesn't work in webkit and IE9 and below so use text-indent instead:
-    text-indent: 10px;
+    text-indent: 0.625em;
     pointer-events: all;
-    height: 2.625em; // 42px/16px (Padding doesn't work here, so we use a fixed height).
+    height: 3.125em; // Padding doesn't work here, so we use a fixed height.
     overflow: hidden;
     background-color: $header-background-color;
-    border: 2px solid $white;
+    border: 1px solid $white;
     color: $white;
     /* IE fix for appearance none (see above) */
     &::-ms-expand {
       display: none;
     }
-  }
-
-  .form-type-select {
-    height: 2.625em; // Appearently webkit needs this explicitly.
   }
 
   .ctools-jump-menu-button {
@@ -1374,16 +1370,16 @@ tr.selected td {
 
   input.form-text { // The search field
     background-color: $header-background-color;
-    border: 2px solid $white;
+    border: 1px solid $white;
     padding: 0;
-    height: 2.625em;
-    padding-left: 40px;
+    height: 3.125em;
+    padding-left: 2.8125em;
   }
 
   i.fa {
     position: absolute;
-    top: 12px;
-    left: 10px;
+    top: 16px;
+    left: 16px;
   }
 
   input.form-submit { // The search button
@@ -1393,7 +1389,7 @@ tr.selected td {
     top: 0;
     right: 0;
     padding: 0 1em;
-    border: 2px solid $white;
+    border: 1px solid $white;
   }
 
 }
