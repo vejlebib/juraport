@@ -86,35 +86,39 @@ function juraport_theme_preprocess_node_jura_subject(&$variables, $hook) {
  * Places fontawesome icons in front of field collections on jura_subject nodes.
  */
 function juraport_theme_preprocess_field(&$variables, $hook) {
-  if (isset($variables['element']['#field_name'])) {
-    $field_name = $variables['element']['#field_name'];
+  $field_name = $variables['element']['#field_name'];
+  $field_type = $variables['element']['#field_type'];
+  $bundle = $variables['element']['#bundle'];
 
-    // Place an info-icon at the information-box title
-    if ($field_name == 'field_information_box_title') {
-      $variables['items'][0]['#prefix'] = '<i class="fa fa-info-circle fa-lg"></i>';
+  // Place an info-icon at the information-box title
+  if ($field_name == 'field_information_box_title') {
+    $variables['items'][0]['#prefix'] = '<i class="fa fa-info-circle fa-lg"></i>';
+  }
+
+  // Special handling for the field collections on the jura_subject nodes.
+  if ($bundle == 'jura_subject' && $field_type == 'field_collection') {
+    $prefix = '';
+
+    if ($field_name == 'field_jura_subject_laws_rules') {
+      $prefix = '<i class="fa fa-key fa-2x"></i>';
+    }
+    else if ($field_name == 'field_jura_subject_online') {
+      $prefix = '<i class="fa fa-globe fa-2x"></i>';
+    }
+    else if ($field_name == 'field_jura_subject_lawtext_rules') {
+      $prefix = '<i class="fa fa-institution fa-2x"></i>';
+    }
+    else if ($field_name == 'field_jura_subject_loan') {
+      $prefix = '<i class="fa fa-book fa-2x"></i>';
+    }
+    else if ($field_name == 'field_jura_subject_network') {
+      $prefix = '<i class="fa fa-group fa-2x"></i>';
     }
 
-    // Placement of jura_subject field icons
-    if (isset($variables['label'])) {
-      $prefix = '';
+    $variables['label'] = $prefix . '<h3 class="field-label-text">' . $variables['label'] . '</h3>';
 
-      if ($field_name == 'field_jura_subject_laws_rules') {
-        $prefix = '<i class="fa fa-key fa-2x"></i>';
-      }
-      else if ($field_name == 'field_jura_subject_online') {
-        $prefix = '<i class="fa fa-globe fa-2x"></i>';
-      }
-      else if ($field_name == 'field_jura_subject_lawtext_rules') {
-        $prefix = '<i class="fa fa-institution fa-2x"></i>';
-      }
-      else if ($field_name == 'field_jura_subject_loan') {
-        $prefix = '<i class="fa fa-book fa-2x"></i>';
-      }
-      else if ($field_name == 'field_jura_subject_network') {
-        $prefix = '<i class="fa fa-group fa-2x"></i>';
-      }
-      $variables['label'] = $prefix . '<span class="field-label-text">' . $variables['label'] . '</span>';
-    }
+    // Add our custom template suggestion.
+    $variables['theme_hook_suggestions'][] = 'field__field_collection__jura_subject';
   }
 }
 
