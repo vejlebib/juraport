@@ -112,7 +112,7 @@
 .content-inner-wrapper,
 .sidebar-inner-wrapper {
   background: white;
-  padding: 0 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
   overflow: hidden; /* Prevents margins from text pushing everything down */
 }
 
@@ -135,6 +135,11 @@
  */
 #page {
   @include alpha-background-color(rgba(black, 0.2), $background-color);
+}
+
+.page__title {
+  margin-top: 0;
+  border-bottom: 2px solid $header-background-color;
 }
 
 /**
