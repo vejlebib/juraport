@@ -763,7 +763,9 @@ span.field-label {
 
 /* Block wrapper. */
 .block {
-  margin-bottom: rhythm(1);
+  // Use an increased veritcal rhythm for blocks to make a better distinction
+  // between them in the sidebar.
+  margin-bottom: rhythm(1.5);
 
   button,
   html input[type="button"],
@@ -773,6 +775,16 @@ span.field-label {
   select {
     width: 100%;
   }
+
+  // Use smaller spacing on headings in blocks.
+  h1, h2, h3, h4, h5, h6 {
+    margin: rhythm(0.5) 0;
+  }
+}
+
+.region .block__title {
+  margin-top: 0;
+  border-bottom: 2px solid $header-background-color;
 }
 
 /**
@@ -1399,13 +1411,14 @@ tr.selected td {
  */
 #block-juraport-jura-subject-juraport-info-box-viewer {
 
-  .field,
-  .entity-field-collection-item  {
-    /* Establish a vertical rhythm between field in the info boxes */
-    @include output-rhythm(margin, rhythm(1) 0);
+  .field  {
+    // vertical rhythm between fields in the info-boxes.
+    @include output-rhythm(margin, rhythm(0.75) 0);
   }
 
   .entity-field-collection-item {
+    // Vertical rhythm between info-boxes in the block.
+    margin-bottom: rhythm(1);
     padding: 0 10px;
     border: 2px solid $header-background-color;
   }
@@ -1415,14 +1428,15 @@ tr.selected td {
     color: $header-text-color;
     border-bottom: 2px solid $header-background-color;
     position: relative;
+    margin-top: 10px;
     padding-left: 27px;
-    padding-bottom: 1px;
+    padding-bottom: 10px;
 
     .fa {
       position: absolute;
       color: $header-background-color;
       left: 0;
-      bottom: 4px;
+      bottom: 12px;
     }
   }
 
@@ -1436,6 +1450,43 @@ tr.selected td {
   }
 
 }
+
+/**
+ * Special styling of jura subject lists in blocks.
+ */
+.block .view-jura-subject-overview ul {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    position: relative;
+    overflow: visible;
+    border-bottom: 1px dotted $header-background-color;
+
+    // Using padding for vertical rhythm yields a better result here.
+    @include output-rhythm(padding, rhythm(0.5) 0);
+    margin: 0;
+    padding-left: 1.2em;
+
+    // Pull the first one closer to the header.
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    &:before {
+      font-size: 150%;
+      color: $header-background-color;
+      content: "\00a7"; // Paragraph sign.
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
 .juraport-jura-subject-view-column-overview {
   // Negate some of the vertical rhythm applied on the top-level blocks.
   // This is a bit hackish, but for now the easiest way.
