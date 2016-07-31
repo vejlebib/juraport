@@ -1214,6 +1214,63 @@ tr.selected td {
     color: $header-background-color;
     margin-right: 0.5em;
   }
+
+  .field-collection-view {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.jura-subject-maintained-by {
+  margin: 0;
+  @include output-rhythm(padding, rhythm(1) 0);
+  border-top: 1px solid #D3D7D9;
+}
+
+/**
+ * The main listings on Jura subject nodes.
+ */
+.jura-subject-list {
+  list-style: none;
+  padding-left: 3em;
+
+  > li {
+    position: relative;
+    overflow: visible;
+    //border-bottom: 1px dotted $header-background-color;
+
+    // Using padding for vertical rhythm yields a better result here.
+    @include output-rhythm(padding, rhythm(0.25) 0);
+    margin: 0;
+    padding-left: 1.2em;
+
+    // Pull the first one closer to the header.
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    &:before {
+      font-size: 120%;
+      color: $header-background-color;
+      content: "\00b6";
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  .field-type-link-field {
+    float: left;
+    padding-right: 0.3em;
+
+    a {
+      font-weight: bold;
+    }
+  }
 }
 
 /**
