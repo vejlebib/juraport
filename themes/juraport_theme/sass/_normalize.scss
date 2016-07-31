@@ -116,17 +116,20 @@ a {
   color: $header-background-color;
 }
 a:link {
+  text-decoration: none;
 }
 a:visited {
 }
 a:hover,
 a:focus {
   color: darken($header-background-color, 20%);
+  text-decoration: underline;
 }
 a:active,
 a.active,
 ul.menu a.active {
   font-weight: bold;
+  text-decoration: underline;
   color: $header-background-color;
 }
 
@@ -655,3 +658,4 @@ td,
 th {
   padding: 0;
 }
+
