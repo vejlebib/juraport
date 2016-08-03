@@ -32,6 +32,7 @@ dependencies[] = page_manager
 dependencies[] = views
 dependencies[] = views_ui
 dependencies[] = backup_migrate
+dependencies[] = profile2
 dependencies[] = uuid
 dependencies[] = elements
 dependencies[] = l10n_update
