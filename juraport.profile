@@ -4,10 +4,6 @@
  * Enables modules and site configuration for a standard site installation.
  */
 
-// Initialize profiler.
-!function_exists('profiler_v2') ? require_once 'libraries/profiler/profiler.inc' : FALSE;
-profiler_v2('juraport');
-
 /**
  * Implements hook_form_FORM_ID_alter() for install_configure_form().
  *
@@ -29,7 +25,7 @@ function juraport_install_tasks(&$install_state) {
 			'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
 			'type' => 'batch',
 		),
-	) + array('profiler_install_profile_complete' => array());
+	);
 	return $tasks;
 }
 
