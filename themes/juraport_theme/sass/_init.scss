@@ -43,6 +43,7 @@ $strict-normalize: false;
 $base-font-size:   16px; // The font size set on the root html element.
 $base-line-height: 24px; // This line-height determines the basic unit of vertical rhythm.
 
+$site-name-fontsize:     3    * $base-font-size;
 $title-fontsize-desktop: 4    * $base-font-size;
 $title-fontsize-tablet:  3    * $base-font-size;
 $title-fontsize-mobile:  2    * $base-font-size;

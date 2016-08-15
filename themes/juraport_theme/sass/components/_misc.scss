@@ -159,7 +159,7 @@
 }
 
 .header__logo-wrapper {
-  width: 10%;
+  width: 60px; // Adjus the size of the logo.
   float: left;
   margin-left: 5px;
 }
@@ -172,20 +172,20 @@
 /* Wrapper for website name and slogan. */
 .header__name-and-slogan {
   @include clearfix();
-  margin-left: 12%;
+  margin-left: 90px;
   position: relative;
 }
 
 /* The name of the website. */
 .header__site-name {
-  @include adjust-font-size-to($title-fontsize-mobile);
+  @include adjust-font-size-to($site-name-fontsize);
   margin: 0;
   line-height: 1em;
   position: absolute;
-  bottom: 6%;
+  bottom: 5px;
 }
 
-@media all and (min-width: 480px) {
+/*@media all and (min-width: 480px) {
   .header__site-name {
     @include adjust-font-size-to($title-fontsize-tablet);
     line-height: 1em;
@@ -198,7 +198,7 @@
     @include adjust-font-size-to($title-fontsize-desktop);
     line-height: 1em;
   }
-}
+}*/
 
 /* The link around the name of the website. */
 .header__site-link {

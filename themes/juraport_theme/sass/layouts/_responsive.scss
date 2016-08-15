@@ -27,14 +27,13 @@ $zen-auto-include-item-base: false;
  * For screen sizes larger than 1200px, prevent excessively long lines of text
  * by setting a max-width.
  */
-#page,
-.region-bottom {
-  margin: 10px auto;
+#main,
+.header-inner {
+  margin: auto;
   max-width: 1200px;
 }
 
 /* Apply the shared properties of grid items in a single, efficient ruleset. */
-#header,
 #content,
 .region-sidebar-first,
 .region-sidebar-second,
@@ -96,7 +95,7 @@ $zen-auto-include-item-base: false;
       @include zen-new-row();
     }
 
-  }  
+  }
 
   /* Footer menu layout: 3 menu items per row on tablets */
   #footer {
