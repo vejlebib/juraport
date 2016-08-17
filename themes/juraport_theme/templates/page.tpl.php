@@ -20,18 +20,12 @@
         </div>
       <?php endif; ?>
 
-      <?php if ($site_name || $site_slogan): ?>
-        <div class="header__name-and-slogan" id="name-and-slogan">
-          <?php if ($site_name): ?>
-            <h1 class="header__site-name" id="site-name">
-              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="header__site-link" rel="home"><span><?php print $site_name; ?></span></a>
-            </h1>
-          <?php endif; ?>
-          <button class="navigation-bar-toggle">
-            <span><?php t('Toggle menu'); ?></span>
-          </button>
-        </div>
-      <?php endif; ?>
+      <h1 class="header__site-name" id="site-name">
+          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="header__site-link" rel="home"><span><?php print $site_name; ?></span></a>
+      </h1>
+      <button class="navigation-bar-toggle">
+        <span><?php t('Toggle menu'); ?></span>
+      </button>
 
     <?php print render($page['header']); ?>
 
@@ -41,7 +35,6 @@
     ?>
 
     <?php if ($navigation_bar): ?>
-      <hr/>
       <div class="navigation">
         <nav id="navigation-bar" role="navigation">
           <?php print $navigation_bar; ?>
@@ -80,7 +73,7 @@
     ?>
 
     <?php if ($sidebar_first || $sidebar_second): ?>
-      <aside class="sidebars">
+      <aside class="sidebars clearfix">
         <?php print $sidebar_first; ?>
         <?php print $sidebar_second; ?>
       </aside>

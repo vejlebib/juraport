@@ -1493,16 +1493,7 @@ tr.selected td {
 
   .jura-subject-overview-column {
     @include box-sizing(border-box);
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .jura-subject-overview-column-first {
-    padding-left: 0;
-  }
-
-  .jura-subject-overview-column-last {
-    padding-right: 0;
+    width: 100%;
   }
 
   li {
@@ -1539,4 +1530,25 @@ tr.selected td {
   h2 {
     @include output-rhythm(margin, rhythm(0.25) 0);
   }
+}
+
+@media all and (min-width: 768px) {
+
+  .juraport-jura-subject-view-column-overview {
+
+    .jura-subject-overview-column {
+      width: 33.33333333%;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .jura-subject-overview-column-first {
+      padding-left: 0;
+    }
+
+    .jura-subject-overview-column-last {
+      padding-right: 0;
+    }
+  }
+
 }

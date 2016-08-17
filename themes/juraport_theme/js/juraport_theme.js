@@ -1,6 +1,6 @@
 /**
  * @file
- * 
+ *
  * Contains the general behavior for the Juraport theme.
  */
 
@@ -19,10 +19,10 @@
       // may be needed to remove the style applied by slideToggle.
       $(window).resize(function() {
         var windowWidth = $(window).width();
-        if (windowWidth >= 480 && !toggle.hasClass("active")) {
+        if (windowWidth >= 960 && !toggle.hasClass("active")) {
         	navigationBar.removeAttr("style");
-        }       
-      });   	  	
+        }
+      });
 	  }
 	};
 
