@@ -750,10 +750,6 @@ span.field-label {
 
 /* Block wrapper. */
 .block {
-  // Use an increased veritcal rhythm for blocks to make a better distinction
-  // between them in the sidebar.
-  margin-bottom: rhythm(1.5);
-
   button,
   html input[type="button"],
   input[type="reset"],
@@ -762,14 +758,24 @@ span.field-label {
   select {
     width: 100%;
   }
-
-  // Use smaller spacing on headings in blocks.
-  h1, h2, h3, h4, h5, h6 {
-    margin: rhythm(0.5) 0;
-  }
 }
 
-.region .block__title {
+.sidebar {
+
+  .block {
+    // Use an increased veritcal rhythm for blocks to make a better distinction
+    // between them in the sidebar.
+    margin-bottom: rhythm(1.5);
+
+    // Use smaller spacing on headings in blocks ib the sidebar.
+    h1, h2, h3, h4, h5, h6 {
+      margin: rhythm(0.5) 0;
+    }
+  }
+
+}
+
+.sidebar .sidebar-inner-wrapper .block__title {
   margin-top: 0;
   border-bottom: 2px solid $header-background-color;
 }
