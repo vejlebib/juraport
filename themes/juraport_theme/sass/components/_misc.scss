@@ -147,7 +147,6 @@
  */
 #header {
   background: $header-background-color;
-  padding-top: 0.75%;
 
   hr {
     @include output-rhythm(margin, rhythm(0.5) 0);
@@ -158,47 +157,34 @@
   }
 }
 
-.header__logo-wrapper {
-  width: 60px; // Adjus the size of the logo.
-  float: left;
-  margin-left: 5px;
+.header-inner {
+  position: relative;
+  padding: 10px;
 }
 
-/* Wrapping link for logo. */
 .header__logo {
   display: block;
+  line-height: 0; // This is a link (loog-link).
+
+  img {
+    width: 60px; // Adjust the size of the logo.
+  }
 }
 
-/* Wrapper for website name and slogan. */
-.header__name-and-slogan {
-  @include clearfix();
-  margin-left: 90px;
-  position: relative;
+.header__logo-wrapper {
+  display: inline-block;
 }
 
-/* The name of the website. */
+/* The name of the website (wrapper). */
 .header__site-name {
   @include adjust-font-size-to($site-name-fontsize);
   margin: 0;
+  display: inline-block;
   line-height: 1em;
   position: absolute;
-  bottom: 5px;
+  top: 60px;
+  left: 80px;
 }
-
-/*@media all and (min-width: 480px) {
-  .header__site-name {
-    @include adjust-font-size-to($title-fontsize-tablet);
-    line-height: 1em;
-    bottom: 2%;
-  }
-}
-
-@media all and (min-width: 960px) {
-  .header__site-name {
-    @include adjust-font-size-to($title-fontsize-desktop);
-    line-height: 1em;
-  }
-}*/
 
 /* The link around the name of the website. */
 .header__site-link {
@@ -239,22 +225,18 @@
 /**
  * Navigation
  */
-.navigation {
-  margin: 1.5em 0 1.375em 0;
+.header-inner .navigation { // Need to be more specific here.
+  margin: 0;
 
-  .form-item,
-  .block {
+  .form-item {
     margin-top: 0;
     margin-bottom: 0;
   }
 
-}
-
-@media all and (max-width: 959px) {
-  .navigation,
-  .navigation .block {
+  .block {
     @include output-rhythm(margin, rhythm(0.5) 0);
   }
+
 }
 
 .navigation-bar-toggle-wrapper {
@@ -268,7 +250,7 @@
   display: block;
   position: absolute;
   right: 0;
-  bottom: -3px;
+  top: 0;
   margin: 0;
   padding: 0;
   width: 54px;
@@ -356,7 +338,7 @@
   display: none;
 }
 
-@media all and (min-width: 480px) {
+@media all and (min-width: 960px) {
   #navigation-bar {
     display: block;
   }
