@@ -99,6 +99,10 @@ body {
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+}
+
 @media all and (min-width: 960px) {
   body {
     background: url("../images/Juraportbaggrund.jpg") no-repeat center center fixed;

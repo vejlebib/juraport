@@ -116,10 +116,6 @@
   overflow: hidden; /* Prevents margins from text pushing everything down */
 }
 
-.column {
-  padding-top: 10px;
-}
-
 .content-inner-wrapper {
   padding-left: 20px;
   padding-right: 20px;
@@ -147,6 +143,11 @@
  */
 #header {
   background: $header-background-color;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+  position: relative;
+  z-index: 100;
 
   hr {
     @include output-rhythm(margin, rhythm(0.5) 0);
