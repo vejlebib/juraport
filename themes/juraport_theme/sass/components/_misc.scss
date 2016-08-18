@@ -130,6 +130,7 @@
  * Page
  */
 #page {
+  min-height: 100%;
   @include alpha-background-color(rgba(black, 0.2), $background-color);
 }
 
@@ -361,6 +362,7 @@ ul.footer-menu {
 /* Styling of footer-menu */
 #footer {
   padding-top: 10px;
+
   ul.footer-menu {
     @include clearfix();
     background: $footer-background-color;
