@@ -161,7 +161,7 @@ function juraport_base_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'linkchecker_check_links_interval';
-  $strongarm->value = '2419200';
+  $strongarm->value = '604800';
   $export['linkchecker_check_links_interval'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -177,6 +177,13 @@ function juraport_base_strongarm() {
   $strongarm->name = 'linkchecker_check_useragent';
   $strongarm->value = 'Drupal (+http://drupal.org/)';
   $export['linkchecker_check_useragent'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'linkchecker_cleanup_links_last';
+  $strongarm->value = 1471511305;
+  $export['linkchecker_cleanup_links_last'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
