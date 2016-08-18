@@ -20,9 +20,8 @@ function juraport_base_install() {
  * change them.
  */
 function _juraport_base_set_default_date_formats() {
-  $formats = system_get_date_formats();
-  variable_set('date_format_juraport_date_only', array_shift(array_keys($formats['juraport_date_with_year'])));
-  variable_set('date_format_juraport_time_only', array_shift(array_keys($formats['juraport_time_only'])));
+  variable_set('date_format_juraport_date_only', 'l j. F Y');
+  variable_set('date_format_juraport_time_only', 'G:i');
   variable_set('date_format_short', 'j. M Y - G:i');
   variable_set('date_format_medium', 'j. F Y - G:i');
   variable_set('date_format_long', 'l, j. F Y - G:i');
@@ -39,6 +38,5 @@ function juraport_base_update_7001(&$sandbox) {
  * - Update date format for juraport_date_only format type.
  */
 function juraport_base_update_7002(&$sandbox) {
-  $formats = system_get_date_formats();
-  variable_set('date_format_juraport_date_only', array_shift(array_keys($formats['juraport_date_with_year'])));
+  variable_set('date_format_juraport_date_only', 'l j. F Y');
 }

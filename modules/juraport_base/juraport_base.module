@@ -22,13 +22,13 @@ function juraport_base_date_formats() {
       'locales' => array(),
     ),
     array(
-      'type' => 'juraport_time_only',
-      'format' => 'G:i',
+      'type' => 'juraport_date_only',
+      'format' => 'l j. F Y',
       'locales' => array(),
     ),
     array(
-      'type' => 'juraport_date_with_year',
-      'format' => 'l j. F Y',
+      'type' => 'juraport_time_only',
+      'format' => 'G:i',
       'locales' => array(),
     ),
   );
