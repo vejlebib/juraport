@@ -144,9 +144,9 @@
  */
 #header {
   background: $header-background-color;
-  -webkit-box-shadow: 0 8px 6px -6px black;
-  -moz-box-shadow: 0 8px 6px -6px black;
-  box-shadow: 0 8px 6px -6px black;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(black, 0.7);
+  -moz-box-shadow: 0 8px 6px -6px rgba(black, 0.7);
+  box-shadow: 0 8px 6px -6px rgba(black, 0.7);
   position: relative;
   z-index: 100;
 
