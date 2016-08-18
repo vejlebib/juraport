@@ -120,6 +120,9 @@ projects[linkit][version] = "3.5"
 projects[globalredirect][subdir] = "contrib"
 projects[globalredirect][version] = "1.5"
 
+projects[magic][subdir] = "contrib"
+projects[magic][version] = "2.2"
+
 ; Base theme
 projects[zen][type] = "theme"
 projects[zen][version] = "5.5"

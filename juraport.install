@@ -29,9 +29,6 @@ function juraport_install() {
   // Activate admin theme while editing a node
   variable_set('node_admin_theme', '1');
 
-  // Submit theme settings.
-  variable_set('theme_' . $default_theme . '_settings', _juraport_theme_settings());
-
   // Set default language
   // Note: It was moved from feature because of the javascript hash-value.
   // See: https://www.drupal.org/node/1850618
@@ -215,38 +212,6 @@ function _juraport_prepare_term_object($vid, $term_name) {
 	$term->vid = $vid;
 	$term->name = $term_name;
 	return $term;
-}
-
-/**
- * Helper function to hold our default theme settings.
- */
-function _juraport_theme_settings() {
-  return array(
-    'toggle_logo' => 1,
-    'toggle_name' => 1,
-    'toggle_favicon' => 1,
-    'default_logo' => 0,
-    'logo_path' => 'profiles/juraport/themes/juraport_theme/images/juraport.png',
-    'logo_upload' => '',
-    'default_favicon' => 0,
-    'favicon_path' => 'profiles/juraport/themes/juraport_theme/images/juraport.ico',
-    'favicon_upload' => '',
-    'zen_breadcrumb' => 'admin',
-    'zen_breadcrumb_separator' => ' › ',
-    'zen_breadcrumb_home' => 1,
-    'zen_breadcrumb_trailing' => 0,
-    'zen_breadcrumb_title' => 0,
-    'zen_skip_link_anchor' => 'main-menu',
-    'zen_skip_link_text' => 'Jump to navigation',
-    'zen_html5_respond_meta' => array(
-      'respond' => 'respond',
-      'html5' => 'html5',
-      'meta' => 'meta',
-    ),
-    'zen_rebuild_registry' => 0,
-    'zen_wireframes' => 0,
-    'favicon_mimetype' => 'image/vnd.microsoft.icon',
-  );
 }
 
 /**
