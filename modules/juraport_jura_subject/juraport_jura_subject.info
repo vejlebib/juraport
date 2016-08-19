@@ -15,9 +15,14 @@ dependencies[] = metatag
 dependencies[] = similarterms
 dependencies[] = strongarm
 dependencies[] = taxonomy
+
+files[] = juraport_jura_subject_plugin_style_column_overview.inc
+
+features[ctools][] = fb_social:fb_social:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
+features[fb_social_preset][] = jura_subject_like
 features[features_api][] = api:2
 features[field_base][] = field_information_box_content
 features[field_base][] = field_information_box_more
@@ -87,5 +92,3 @@ features[variable][] = pathauto_node_jura_subject_pattern
 features[views_view][] = jura_subject_overview
 features[views_view][] = juraport_editor_list
 features_exclude[dependencies][views] = views
-files[] = juraport_jura_subject_plugin_style_column_overview.inc
-mtime = 1434321071

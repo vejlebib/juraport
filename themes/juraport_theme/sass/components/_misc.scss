@@ -1190,6 +1190,8 @@ tr.selected td {
   ul.action-links {
     list-style: none;
   }
+
+
 }
 
 .field-collection-view {
@@ -1556,18 +1558,7 @@ tr.selected td {
 
 }
 
-.service-links {
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  li {
-    display: inline-block;
-  }
-
-  iframe.service-links-facebook-like {
-    width: 100px !important;
-  }
+.fb-social-like-plugin {
+  margin-top: -1em;
+  margin-bottom: 1.5em;
 }
