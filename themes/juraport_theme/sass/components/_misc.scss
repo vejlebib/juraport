@@ -1555,3 +1555,19 @@ tr.selected td {
   }
 
 }
+
+.service-links {
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  iframe.service-links-facebook-like {
+    width: 100px !important;
+  }
+}

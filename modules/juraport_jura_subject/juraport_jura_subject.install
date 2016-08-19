@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ *
+ * Install file for the Juraport jura subject module.
+ */
+
+/**
+ * - Enable fb_social module.
+ */
+function juraport_jura_subject_update_7001(&$sandbox) {
+  module_enable('fb_social', TRUE);
+}

@@ -38,6 +38,7 @@ dependencies[] = elements
 dependencies[] = l10n_update
 dependencies[] = views_bulk_operations
 dependencies[] = admin_views
+dependencies[] = magic
 
 ; Juraport modules
 dependencies[] = juraport_base

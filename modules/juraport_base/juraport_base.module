@@ -70,10 +70,12 @@ function juraport_base_secure_permissions($role) {
     'anonymous user' => array(
       'access content',
       'search content',
+      'access service links',
     ),
     'authenticated user' => array(
       'access content',
       'search content',
+      'access service links',
     ),
     'juraport editor' => array(
       'access administration menu',
@@ -98,6 +100,7 @@ function juraport_base_secure_permissions($role) {
       'view revisions',
       'view the administration theme',
       'use text format filtered_html',
+      'access service links',
     ),
   );
   if (isset($permissions[$role])) {
