@@ -1273,7 +1273,7 @@ tr.selected td {
  */
 .jura-subject-list {
   list-style: none;
-  padding-left: 3em;
+  padding-left: 10px; // On small screens use the scarce space.
 
   > li {
     position: relative;
@@ -1311,6 +1311,12 @@ tr.selected td {
     a {
       font-weight: bold;
     }
+  }
+}
+
+@media all and (min-width: 480px) {
+  .jura-subject-list {
+    padding-left: 3.5em;
   }
 }
 
