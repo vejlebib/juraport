@@ -1259,7 +1259,8 @@ tr.selected td {
     //border-bottom: 1px dotted $header-background-color;
 
     // Using padding for vertical rhythm yields a better result here.
-    @include output-rhythm(padding, rhythm(0.25) 0);
+    //@include output-rhythm(padding, rhythm(0.25) 0);
+    padding: 0;
     margin: 0;
     padding-left: 1.2em;
 
@@ -1559,6 +1560,5 @@ tr.selected td {
 }
 
 .fb-social-like-plugin {
-  margin-top: -1em;
   margin-bottom: 1.5em;
 }
