@@ -218,6 +218,7 @@
 .header__region {
   /* Clear the logo. */
   clear: both;
+  float: right;
 }
 
 .region {
@@ -1561,4 +1562,47 @@ tr.selected td {
 
 .fb-social-like-plugin {
   margin-bottom: 1.5em;
+}
+
+#block-menu-menu-top-bar-menu {
+  margin-right: 42px;
+
+  a {
+    color: white;
+  }
+
+  ul {
+    margin-top: 0;
+  }
+
+  li {
+    padding: 5px;
+    padding-top: 0;
+    list-style: none;
+    display: inline-block;
+
+    a {
+      padding-right: 10px;
+      border-right: 1px solid white;
+    }
+
+    &:last-of-type  a {
+      padding-right: 0;
+      border-right: none;
+    }
+
+  }
+
+}
+
+@media all and (min-width: 960px)  {
+
+  #block-menu-menu-top-bar-menu {
+    margin-right: 0;
+
+    li  {
+      padding-top: 5px;
+    }
+  }
+
 }

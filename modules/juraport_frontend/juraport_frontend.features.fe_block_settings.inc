@@ -140,6 +140,38 @@ function juraport_frontend_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['menu-menu-top-bar-menu'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'menu-top-bar-menu',
+    'module' => 'menu',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'juraport_theme' => array(
+        'region' => 'header',
+        'status' => 1,
+        'theme' => 'juraport_theme',
+        'weight' => -14,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+      'zen' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'zen',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
   $export['node-recent'] = array(
     'cache' => 1,
     'custom' => 0,
