@@ -123,6 +123,9 @@ projects[globalredirect][version] = "1.5"
 projects[magic][subdir] = "contrib"
 projects[magic][version] = "2.2"
 
+projects[fb_social][subdir] = "contrib"
+projects[fb_social][version] = "2.0-beta4"
+
 ; Base theme
 projects[zen][type] = "theme"
 projects[zen][version] = "5.5"
