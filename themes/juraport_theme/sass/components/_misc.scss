@@ -111,9 +111,13 @@
  */
 .content-inner-wrapper,
 .sidebar-inner-wrapper {
-  background: white;
-  padding: 10px 10px 10px 10px;
+  padding: 10px;
   overflow: hidden; /* Prevents margins from text pushing everything down */
+}
+
+.region-sidebar-second .sidebar-inner-wrapper {
+  padding-top: 20px;
+  padding-left: 0;
 }
 
 .content-inner-wrapper {
@@ -122,6 +126,7 @@
 }
 
 #main {
+  background: white;
   padding-left: 5px;
   padding-right: 5px;
   position: relative;

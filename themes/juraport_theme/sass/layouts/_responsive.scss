@@ -28,7 +28,8 @@ $zen-auto-include-item-base: false;
  * by setting a max-width.
  */
 #main,
-.header-inner {
+.header-inner,
+.footer-inner {
   margin: auto;
   max-width: 1200px;
 }
