@@ -384,11 +384,10 @@ ul.footer-menu {
 
 /* Styling of footer-menu */
 #footer {
-  padding-top: 10px;
+  background: $footer-background-color;
 
   ul.footer-menu {
     @include clearfix();
-    background: $footer-background-color;
     padding: 0;
 
     li {
