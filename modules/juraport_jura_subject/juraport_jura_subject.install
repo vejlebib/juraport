@@ -10,5 +10,5 @@
  * - Enable fb_social module.
  */
 function juraport_jura_subject_update_7001(&$sandbox) {
-  module_enable('fb_social', TRUE);
+  module_enable(array('fb_social'), TRUE);
 }
