@@ -10,10 +10,12 @@
 	  attach: function(context, settings) {
 	  	var toggle = $(".navigation-bar-toggle", context);
 	  	var navigationBar = $("#navigation-bar", context);
+      var topBarMenu = $("#block-menu-menu-top-bar-menu", context);
 	  	toggle.bind("touchstart click", function(e) {
 	  		e.preventDefault();
-	  		toggle.hasClass("active") ? toggle.removeClass("active") : toggle.addClass("active");
-	  		navigationBar.slideToggle(500);
+        navigationBar.slideToggle(500);
+        topBarMenu.hasClass("active") ? topBarMenu.removeClass("active") : topBarMenu.addClass("active");
+        toggle.hasClass("active") ? toggle.removeClass("active") : toggle.addClass("active");
 	  	});
       // If the window width moves from the lowest breakpoint to the next, it
       // may be needed to remove the style applied by slideToggle.

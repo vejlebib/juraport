@@ -43,7 +43,7 @@ $strict-normalize: false;
 $base-font-size:   16px; // The font size set on the root html element.
 $base-line-height: 24px; // This line-height determines the basic unit of vertical rhythm.
 
-$site-name-fontsize:     3    * $base-font-size;
+$site-name-fontsize:     2.25 * $base-font-size;
 $title-fontsize-desktop: 4    * $base-font-size;
 $title-fontsize-tablet:  3    * $base-font-size;
 $title-fontsize-mobile:  2    * $base-font-size;
@@ -100,11 +100,11 @@ $font-monospace:   $courier;
 //
 $background-color:               #a8bbdb;
 $header-background-color:        #546696;
+$gray:                           #d5d5d5;
 $footer-background-color:        #736596;
 $header-text-color:              #330033;
 $white:                          #fff;
 $black:                          #000;
-$gray:                           #d5d5d5;
 $gray-light:                     lighten($gray, 10%);
 $gray-lighter:                   lighten($gray, 15%);
 $gray-dark:                      darken($gray, 10%);

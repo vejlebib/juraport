@@ -206,8 +206,16 @@
   display: inline-block;
   line-height: 1em;
   position: absolute;
-  top: 60px;
+  top: 70px;
   left: 80px;
+}
+
+@media all and (min-width: 480px) {
+  .header__site-name {
+    @include adjust-font-size-to(1.33333 * $site-name-fontsize);
+    line-height: 1em;
+    top: 60px;
+  }
 }
 
 /* The link around the name of the website. */
@@ -240,7 +248,6 @@
 .header__region {
   /* Clear the logo. */
   clear: both;
-  float: right;
 }
 
 .region {
@@ -1213,29 +1220,7 @@ tr.selected td {
     list-style: none;
   }
 
-
 }
-
-.field-collection-view {
-  /* Establish a vertical rhythm between field-collections */
-  /* We use the same indent of 3em as the field-label */
-  /*@include output-rhythm(margin, rhythm(1) 3em);
-  padding-top: 0;
-  border: none;*/
-
-  /*.field-type-link-field {
-    float: left;
-    padding-right: 5px;
-  }*/
-}
-
-/*.field-collection-view-links a {
-  @include box-sizing(border-box);
-  @include sassy-button("flat", 0, $base-font-size, $header-background-color);
-  text-decoration: none;
-  font-size: 90%;
-  padding: 0.2em 0.5em;
-}*/
 
 /**
  * Jura subject node view.
@@ -1278,10 +1263,6 @@ tr.selected td {
   > li {
     position: relative;
     overflow: visible;
-    //border-bottom: 1px dotted $header-background-color;
-
-    // Using padding for vertical rhythm yields a better result here.
-    //@include output-rhythm(padding, rhythm(0.25) 0);
     padding: 0;
     margin: 0;
     padding-left: 1.2em;
@@ -1592,19 +1573,21 @@ tr.selected td {
 }
 
 #block-menu-menu-top-bar-menu {
-  margin-right: 42px;
+  display: none;
 
   a {
     color: white;
   }
 
   ul {
-    margin-top: 0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
   }
 
   li {
+    display: inline-block;
     padding: 5px;
-    padding-top: 0;
     list-style: none;
     display: inline-block;
 
@@ -1622,14 +1605,24 @@ tr.selected td {
 
 }
 
+#block-menu-menu-top-bar-menu.active {
+  display: block;
+}
+
+@media all and (min-width: 480px) {
+  #block-menu-menu-top-bar-menu {
+    display: block;
+    position: absolute;
+    margin-right: 42px;
+    top: 5px;
+    right: 15px;
+  }
+}
+
 @media all and (min-width: 960px)  {
 
   #block-menu-menu-top-bar-menu {
     margin-right: 0;
-
-    li  {
-      padding-top: 5px;
-    }
   }
 
 }

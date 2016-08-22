@@ -27,8 +27,6 @@
         <span><?php t('Toggle menu'); ?></span>
       </button>
 
-    <?php print render($page['header']); ?>
-
     <?php
       // Render the navgation bar to see if there's anything in it.
       $navigation_bar = render($page['navigation']);
@@ -41,6 +39,8 @@
         </nav>
       </div>
     <?php endif; ?>
+
+    <?php print render($page['header']); ?>
 
     </div>
   </header>
